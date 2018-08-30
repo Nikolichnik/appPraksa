@@ -7,22 +7,33 @@
             "fieldName": "name",
             "fieldType": "String",
             "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "zip",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
                 "required",
+                "minlength",
                 "maxlength"
             ],
+            "fieldValidateRulesMinlength": "5",
             "fieldValidateRulesMaxlength": "10"
         },
         {
-            "fieldName": "amount",
-            "fieldType": "Integer",
-            "fieldValidateRules": []
+            "fieldName": "state",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
-    "changelogDate": "20180830084531",
+    "changelogDate": "20180830093050",
     "dto": "no",
     "searchEngine": false,
     "service": "no",
-    "entityTableName": "article",
+    "entityTableName": "city",
     "jpaMetamodelFiltering": false,
     "pagination": "no"
 }

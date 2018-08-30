@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-city-heading" jhiTranslate="brezaApp.city.home.createOrEditLabel">Create or edit a City</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!city.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="city.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="brezaApp.city.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="city.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="brezaApp.city.zip" for="field_zip">Zip</label>
+                    <input type="number" class="form-control" name="zip" id="field_zip"
+                        [(ngModel)]="city.zip" required minlength="5" maxlength="10"/>
+                    <div [hidden]="!(editForm.controls.zip?.dirty && editForm.controls.zip?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.zip?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.zip?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.zip?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.zip?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="brezaApp.city.state" for="field_state">State</label>
+                    <input type="text" class="form-control" name="state" id="field_state"
+                        [(ngModel)]="city.state" required/>
+                    <div [hidden]="!(editForm.controls.state?.dirty && editForm.controls.state?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.state?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

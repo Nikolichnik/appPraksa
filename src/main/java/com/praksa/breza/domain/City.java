@@ -8,11 +8,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Article.
+ * A City.
  */
 @Entity
-@Table(name = "article")
-public class Article implements Serializable {
+@Table(name = "city")
+public class City implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,12 +21,17 @@ public class Article implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(max = 10)
-    @Column(name = "name", length = 10, nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "amount")
-    private Integer amount;
+    @NotNull
+    @Size(min = 5, max = 10)
+    @Column(name = "zip", length = 10, nullable = false)
+    private Integer zip;
+
+    @NotNull
+    @Column(name = "state", nullable = false)
+    private String state;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -41,7 +46,7 @@ public class Article implements Serializable {
         return name;
     }
 
-    public Article name(String name) {
+    public City name(String name) {
         this.name = name;
         return this;
     }
@@ -50,17 +55,30 @@ public class Article implements Serializable {
         this.name = name;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public Integer getZip() {
+        return zip;
     }
 
-    public Article amount(Integer amount) {
-        this.amount = amount;
+    public City zip(Integer zip) {
+        this.zip = zip;
         return this;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setZip(Integer zip) {
+        this.zip = zip;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public City state(String state) {
+        this.state = state;
+        return this;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -72,11 +90,11 @@ public class Article implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Article article = (Article) o;
-        if (article.getId() == null || getId() == null) {
+        City city = (City) o;
+        if (city.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), article.getId());
+        return Objects.equals(getId(), city.getId());
     }
 
     @Override
@@ -86,10 +104,11 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "Article{" +
+        return "City{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", amount=" + getAmount() +
+            ", zip=" + getZip() +
+            ", state='" + getState() + "'" +
             "}";
     }
 }
