@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Integer",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20180830084531",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "article",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
