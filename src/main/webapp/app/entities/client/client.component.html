@@ -16,8 +16,7 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="brezaApp.client.name">Name</span></th>
-            <th><span jhiTranslate="brezaApp.client.city">City</span></th>
-            <th><span jhiTranslate="brezaApp.client.toCity">To City</span></th>
+            <th><span jhiTranslate="brezaApp.client.City">City</span></th>
             <th></th>
             </tr>
             </thead>
@@ -25,10 +24,9 @@
             <tr *ngFor="let client of clients ;trackBy: trackId">
                 <td><a [routerLink]="['/client', client.id, 'view' ]">{{client.id}}</a></td>
                 <td>{{client.name}}</td>
-                <td>{{client.city}}</td>
                 <td>
-                    <div *ngIf="client.toCity">
-                        <a [routerLink]="['../city', client.toCity?.id, 'view' ]" >{{client.toCity?.name}}</a>
+                    <div *ngIf="client.city">
+                        <a [routerLink]="['../city', client.city?.id, 'view' ]" >{{client.city?.name}}</a>
                     </div>
                 </td>
                 <td class="text-right">

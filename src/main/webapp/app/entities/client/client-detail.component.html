@@ -9,14 +9,10 @@
                 <dd>
                     <span>{{client.name}}</span>
                 </dd>
-                <dt><span jhiTranslate="brezaApp.client.city">City</span></dt>
+                <dt><span jhiTranslate="brezaApp.client.City">City</span></dt>
                 <dd>
-                    <span>{{client.city}}</span>
-                </dd>
-                <dt><span jhiTranslate="brezaApp.client.toCity">To City</span></dt>
-                <dd>
-                    <div *ngIf="client.toCity">
-                        <a [routerLink]="['/city', client.toCity?.id, 'view']">{{client.toCity?.name}}</a>
+                    <div *ngIf="client.city">
+                        <a [routerLink]="['/city', client.city?.id, 'view']">{{client.city?.name}}</a>
                     </div>
                 </dd>
             </dl>

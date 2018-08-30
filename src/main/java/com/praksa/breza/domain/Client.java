@@ -25,13 +25,9 @@ public class Client implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
-    @Column(name = "city", nullable = false)
-    private String city;
-
     @ManyToOne
     @JsonIgnoreProperties("")
-    private City toCity;
+    private City city;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -55,30 +51,17 @@ public class Client implements Serializable {
         this.name = name;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public Client city(String city) {
+    public Client city(City city) {
         this.city = city;
         return this;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
-    }
-
-    public City getToCity() {
-        return toCity;
-    }
-
-    public Client toCity(City city) {
-        this.toCity = city;
-        return this;
-    }
-
-    public void setToCity(City city) {
-        this.toCity = city;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -107,7 +90,6 @@ public class Client implements Serializable {
         return "Client{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", city='" + getCity() + "'" +
             "}";
     }
 }

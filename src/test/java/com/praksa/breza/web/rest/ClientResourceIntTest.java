@@ -42,9 +42,6 @@ public class ClientResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CITY = "AAAAAAAAAA";
-    private static final String UPDATED_CITY = "BBBBBBBBBB";
-
     @Autowired
     private ClientRepository clientRepository;
 
@@ -84,8 +81,7 @@ public class ClientResourceIntTest {
      */
     public static Client createEntity(EntityManager em) {
         Client client = new Client()
-            .name(DEFAULT_NAME)
-            .city(DEFAULT_CITY);
+            .name(DEFAULT_NAME);
         return client;
     }
 
@@ -110,7 +106,6 @@ public class ClientResourceIntTest {
         assertThat(clientList).hasSize(databaseSizeBeforeCreate + 1);
         Client testClient = clientList.get(clientList.size() - 1);
         assertThat(testClient.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testClient.getCity()).isEqualTo(DEFAULT_CITY);
     }
 
     @Test
@@ -152,24 +147,6 @@ public class ClientResourceIntTest {
 
     @Test
     @Transactional
-    public void checkCityIsRequired() throws Exception {
-        int databaseSizeBeforeTest = clientRepository.findAll().size();
-        // set the field null
-        client.setCity(null);
-
-        // Create the Client, which fails.
-
-        restClientMockMvc.perform(post("/api/clients")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(client)))
-            .andExpect(status().isBadRequest());
-
-        List<Client> clientList = clientRepository.findAll();
-        assertThat(clientList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllClients() throws Exception {
         // Initialize the database
         clientRepository.saveAndFlush(client);
@@ -179,8 +156,7 @@ public class ClientResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(client.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
     
 
@@ -195,8 +171,7 @@ public class ClientResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(client.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
     @Test
     @Transactional
@@ -219,8 +194,7 @@ public class ClientResourceIntTest {
         // Disconnect from session so that the updates on updatedClient are not directly saved in db
         em.detach(updatedClient);
         updatedClient
-            .name(UPDATED_NAME)
-            .city(UPDATED_CITY);
+            .name(UPDATED_NAME);
 
         restClientMockMvc.perform(put("/api/clients")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -232,7 +206,6 @@ public class ClientResourceIntTest {
         assertThat(clientList).hasSize(databaseSizeBeforeUpdate);
         Client testClient = clientList.get(clientList.size() - 1);
         assertThat(testClient.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testClient.getCity()).isEqualTo(UPDATED_CITY);
     }
 
     @Test

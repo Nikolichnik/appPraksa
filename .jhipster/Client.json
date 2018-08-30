@@ -3,7 +3,7 @@
     "clientRootFolder": "",
     "relationships": [
         {
-            "relationshipName": "toCity",
+            "relationshipName": "City",
             "otherEntityName": "city",
             "relationshipType": "many-to-one",
             "otherEntityField": "name"
@@ -12,13 +12,6 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "city",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
