@@ -31,18 +31,9 @@ export class EmployeeUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ employee }) => {
             this.employee = employee;
         });
-        this.positionService.query({ filter: 'employee-is-null' }).subscribe(
+        this.positionService.query().subscribe(
             (res: HttpResponse<IPosition[]>) => {
-                if (!this.employee.position || !this.employee.position.id) {
-                    this.positions = res.body;
-                } else {
-                    this.positionService.find(this.employee.position.id).subscribe(
-                        (subRes: HttpResponse<IPosition>) => {
-                            this.positions = [subRes.body].concat(res.body);
-                        },
-                        (subRes: HttpErrorResponse) => this.onError(subRes.message)
-                    );
-                }
+                this.positions = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );

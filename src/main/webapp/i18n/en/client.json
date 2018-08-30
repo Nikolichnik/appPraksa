@@ -17,7 +17,10 @@
                 "title": "Client"
             },
             "name": "Name",
-            "City": "City"
+            "address": "Address",
+            "phoneNumber": "Phone Number",
+            "email": "Email",
+            "city": "City"
         }
     }
 }

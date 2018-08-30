@@ -25,7 +25,20 @@ public class Client implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne
+    @NotNull
+    @Column(name = "address", nullable = false)
+    private String address;
+
+    @NotNull
+    @Column(name = "phone_number", nullable = false)
+    private Integer phoneNumber;
+
+    @NotNull
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @ManyToOne(optional = false)
+    @NotNull
     @JsonIgnoreProperties("")
     private City city;
 
@@ -49,6 +62,45 @@ public class Client implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Client address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Client phoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Client email(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public City getCity() {
@@ -90,6 +142,9 @@ public class Client implements Serializable {
         return "Client{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", address='" + getAddress() + "'" +
+            ", phoneNumber=" + getPhoneNumber() +
+            ", email='" + getEmail() + "'" +
             "}";
     }
 }

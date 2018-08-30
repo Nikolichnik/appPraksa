@@ -26,8 +26,20 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="phone_number" type="integer">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="city_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

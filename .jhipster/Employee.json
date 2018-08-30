@@ -5,12 +5,11 @@
         {
             "relationshipName": "position",
             "otherEntityName": "position",
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipValidateRules": [
                 "required"
             ],
             "otherEntityField": "name",
-            "ownerSide": true,
             "otherEntityRelationshipName": "employee"
         }
     ],

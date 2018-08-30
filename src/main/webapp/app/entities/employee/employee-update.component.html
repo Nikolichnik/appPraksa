@@ -34,7 +34,7 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.employee.position" for="field_position">Position</label>
-                    <select class="form-control" id="field_position" name="position" [(ngModel)]="employee.position" required>
+                    <select class="form-control" id="field_position" name="position" [(ngModel)]="employee.position"  required>
                         <option *ngIf="!editForm.value.position" [ngValue]="null" selected></option>
                         <option [ngValue]="positionOption.id === employee.position?.id ? employee.position : positionOption" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.name}}</option>
                     </select>

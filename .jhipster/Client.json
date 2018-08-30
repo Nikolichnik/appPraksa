@@ -5,12 +5,11 @@
         {
             "relationshipName": "city",
             "otherEntityName": "city",
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipValidateRules": [
                 "required"
             ],
             "otherEntityField": "name",
-            "ownerSide": true,
             "otherEntityRelationshipName": "client"
         }
     ],
@@ -31,7 +30,7 @@
         },
         {
             "fieldName": "phoneNumber",
-            "fieldType": "Number",
+            "fieldType": "Integer",
             "fieldValidateRules": [
                 "required"
             ]

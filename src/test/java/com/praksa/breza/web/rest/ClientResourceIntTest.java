@@ -3,6 +3,7 @@ package com.praksa.breza.web.rest;
 import com.praksa.breza.BrezaApp;
 
 import com.praksa.breza.domain.Client;
+import com.praksa.breza.domain.City;
 import com.praksa.breza.repository.ClientRepository;
 import com.praksa.breza.web.rest.errors.ExceptionTranslator;
 
@@ -41,6 +42,15 @@ public class ClientResourceIntTest {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_PHONE_NUMBER = 1;
+    private static final Integer UPDATED_PHONE_NUMBER = 2;
+
+    private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
+    private static final String UPDATED_EMAIL = "BBBBBBBBBB";
 
     @Autowired
     private ClientRepository clientRepository;
@@ -81,7 +91,15 @@ public class ClientResourceIntTest {
      */
     public static Client createEntity(EntityManager em) {
         Client client = new Client()
-            .name(DEFAULT_NAME);
+            .name(DEFAULT_NAME)
+            .address(DEFAULT_ADDRESS)
+            .phoneNumber(DEFAULT_PHONE_NUMBER)
+            .email(DEFAULT_EMAIL);
+        // Add required entity
+        City city = CityResourceIntTest.createEntity(em);
+        em.persist(city);
+        em.flush();
+        client.setCity(city);
         return client;
     }
 
@@ -106,6 +124,9 @@ public class ClientResourceIntTest {
         assertThat(clientList).hasSize(databaseSizeBeforeCreate + 1);
         Client testClient = clientList.get(clientList.size() - 1);
         assertThat(testClient.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testClient.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testClient.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
+        assertThat(testClient.getEmail()).isEqualTo(DEFAULT_EMAIL);
     }
 
     @Test
@@ -147,6 +168,60 @@ public class ClientResourceIntTest {
 
     @Test
     @Transactional
+    public void checkAddressIsRequired() throws Exception {
+        int databaseSizeBeforeTest = clientRepository.findAll().size();
+        // set the field null
+        client.setAddress(null);
+
+        // Create the Client, which fails.
+
+        restClientMockMvc.perform(post("/api/clients")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(client)))
+            .andExpect(status().isBadRequest());
+
+        List<Client> clientList = clientRepository.findAll();
+        assertThat(clientList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPhoneNumberIsRequired() throws Exception {
+        int databaseSizeBeforeTest = clientRepository.findAll().size();
+        // set the field null
+        client.setPhoneNumber(null);
+
+        // Create the Client, which fails.
+
+        restClientMockMvc.perform(post("/api/clients")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(client)))
+            .andExpect(status().isBadRequest());
+
+        List<Client> clientList = clientRepository.findAll();
+        assertThat(clientList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEmailIsRequired() throws Exception {
+        int databaseSizeBeforeTest = clientRepository.findAll().size();
+        // set the field null
+        client.setEmail(null);
+
+        // Create the Client, which fails.
+
+        restClientMockMvc.perform(post("/api/clients")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(client)))
+            .andExpect(status().isBadRequest());
+
+        List<Client> clientList = clientRepository.findAll();
+        assertThat(clientList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllClients() throws Exception {
         // Initialize the database
         clientRepository.saveAndFlush(client);
@@ -156,7 +231,10 @@ public class ClientResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(client.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
+            .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
+            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())));
     }
     
 
@@ -171,7 +249,10 @@ public class ClientResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(client.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
+            .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER))
+            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()));
     }
     @Test
     @Transactional
@@ -194,7 +275,10 @@ public class ClientResourceIntTest {
         // Disconnect from session so that the updates on updatedClient are not directly saved in db
         em.detach(updatedClient);
         updatedClient
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .address(UPDATED_ADDRESS)
+            .phoneNumber(UPDATED_PHONE_NUMBER)
+            .email(UPDATED_EMAIL);
 
         restClientMockMvc.perform(put("/api/clients")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -206,6 +290,9 @@ public class ClientResourceIntTest {
         assertThat(clientList).hasSize(databaseSizeBeforeUpdate);
         Client testClient = clientList.get(clientList.size() - 1);
         assertThat(testClient.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testClient.getAddress()).isEqualTo(UPDATED_ADDRESS);
+        assertThat(testClient.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
+        assertThat(testClient.getEmail()).isEqualTo(UPDATED_EMAIL);
     }
 
     @Test

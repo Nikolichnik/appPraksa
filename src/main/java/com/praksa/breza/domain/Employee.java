@@ -1,5 +1,6 @@
 package com.praksa.breza.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -28,9 +29,9 @@ public class Employee implements Serializable {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JsonIgnoreProperties("")
     private Position position;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
