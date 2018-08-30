@@ -11,7 +11,7 @@
             ],
             "otherEntityField": "name",
             "ownerSide": true,
-            "otherEntityRelationshipName": "city"
+            "otherEntityRelationshipName": "client"
         }
     ],
     "fields": [
