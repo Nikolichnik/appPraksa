@@ -1,7 +1,14 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "",
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "toCity",
+            "otherEntityName": "city",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",
@@ -11,29 +18,18 @@
             ]
         },
         {
-            "fieldName": "zip",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": "10000",
-            "fieldValidateRulesMax": "20000"
-        },
-        {
-            "fieldName": "state",
+            "fieldName": "city",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "changelogDate": "20180830093050",
+    "changelogDate": "20180830102004",
     "dto": "no",
     "searchEngine": false,
     "service": "no",
-    "entityTableName": "city",
+    "entityTableName": "client",
     "jpaMetamodelFiltering": false,
     "pagination": "no"
 }

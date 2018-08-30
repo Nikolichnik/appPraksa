@@ -42,8 +42,8 @@ public class CityResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_ZIP = 1;
-    private static final Integer UPDATED_ZIP = 2;
+    private static final Integer DEFAULT_ZIP = 10000;
+    private static final Integer UPDATED_ZIP = 10001;
 
     private static final String DEFAULT_STATE = "AAAAAAAAAA";
     private static final String UPDATED_STATE = "BBBBBBBBBB";

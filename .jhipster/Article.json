@@ -10,7 +10,8 @@
                 "required",
                 "maxlength"
             ],
-            "fieldValidateRulesMaxlength": "10"
+            "fieldValidateRulesMaxlength": "10",
+            "fieldValidateRulesMinlength": "5"
         },
         {
             "fieldName": "amount",
