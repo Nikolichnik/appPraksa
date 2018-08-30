@@ -43,11 +43,11 @@ def liquibaseCommand(command) {
         main = "liquibase.integration.commandline.Main"
 
         args "--changeLogFile=src/main/resources/config/liquibase/changelog/" + buildTimestamp() +"_changelog.xml"
-        args "--referenceUrl=hibernate:spring:com.brezasoftware.yepps.domain?dialect=org.hibernate.dialect.Oracle12cDialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
-        args "--username="
+        args "--referenceUrl=hibernate:spring:com.praksa.breza.domain?dialect=&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+        args "--username=breza"
         args "--password="
-        args "--url=jdbc:oracle:thin:@localhost:1521:yepps"
-        args "--driver=oracle.jdbc.OracleDriver"
+        args "--url="
+        args "--driver="
         args command
     }
 }

@@ -16,12 +16,10 @@
 
 spring:
     application:
-        name: yepps
-    cache:
-        type: simple
+        name: breza
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:yepps;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        url: jdbc:h2:mem:breza;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
         name:
         username:
         password:
@@ -86,7 +84,7 @@ jhipster:
     security:
         authentication:
             jwt:
-                secret: 72ddbc9c7011fa6b511fb2ff2d4205e453f4c678
+                secret: af89889ab3ef0a4eab9cc9c258a301307847bac2
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

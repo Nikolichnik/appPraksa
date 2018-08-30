@@ -48,13 +48,13 @@ dependencyManagement {
 
 defaultTasks 'bootRun'
 
-group = 'com.brezasoftware.yepps'
+group = 'com.praksa.breza'
 version = '0.0.1-SNAPSHOT'
 
 description = ''
 
 bootWar {
-   mainClassName = 'com.brezasoftware.yepps.YeppsApp'
+   mainClassName = 'com.praksa.breza.BrezaApp'
 }
 
 war {
@@ -62,7 +62,7 @@ war {
 }
 
 springBoot {
-    mainClassName = 'com.brezasoftware.yepps.YeppsApp'
+    mainClassName = 'com.praksa.breza.BrezaApp'
     buildInfo()
 }
 
@@ -131,8 +131,6 @@ configurations {
 repositories {
     mavenLocal()
     jcenter()
-    // more information at https://blogs.oracle.com/dev2dev/entry/how_to_get_oracle_jdbc
-    maven { url "https://maven.oracle.com" }
     //jhipster-needle-gradle-repositories - JHipster will add additional repositories
 }
 
@@ -140,9 +138,7 @@ dependencies {
     // Use ", version: jhipster_dependencies_version, changing: true" if you want
     // to use a SNAPSHOT release instead of a stable release
     compile group: "io.github.jhipster", name: "jhipster-framework"
-    compile "org.springframework.boot:spring-boot-starter-cache"
     compile "io.dropwizard.metrics:metrics-core"
-    compile "io.dropwizard.metrics:metrics-jcache"
     compile "io.dropwizard.metrics:metrics-json"
     compile "io.dropwizard.metrics:metrics-jvm"
     compile "io.dropwizard.metrics:metrics-servlet"
@@ -156,14 +152,11 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-databind"
     compile "com.fasterxml.jackson.module:jackson-module-afterburner"
     compile "com.ryantenney.metrics:metrics-spring"
-    compile "javax.cache:cache-api"
     compile "org.hibernate:hibernate-core"
     compile "com.zaxxer:HikariCP"
     compile "org.apache.commons:commons-lang3"
     compile "commons-io:commons-io"
     compile "javax.transaction:javax.transaction-api"
-    compile "org.ehcache:ehcache"
-    compile "org.hibernate:hibernate-jcache"
     compile "org.hibernate:hibernate-entitymanager"
     compile "org.hibernate:hibernate-envers"
     compile "org.hibernate.validator:hibernate-validator"
@@ -191,6 +184,7 @@ dependencies {
         exclude module: 'mapstruct'
     }
     compile "io.springfox:springfox-bean-validators"
+    compile "mysql:mysql-connector-java"
     compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstruct_version}"
     annotationProcessor "org.hibernate:hibernate-jpamodelgen"
@@ -208,8 +202,6 @@ dependencies {
     testCompile "org.mockito:mockito-core"
     testCompile "com.mattbertolini:liquibase-slf4j"
     testCompile "org.hamcrest:hamcrest-library"
-    testCompile "com.h2database:h2"
-    compile "com.oracle.jdbc:ojdbc8"
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 }
 
