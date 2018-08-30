@@ -14,9 +14,25 @@
             "fieldValidateRulesMinlength": "5"
         },
         {
-            "fieldName": "amount",
+            "fieldName": "articleNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "availableAmount",
             "fieldType": "Integer",
-            "fieldValidateRules": []
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180830084531",

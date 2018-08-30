@@ -16,8 +16,7 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="brezaApp.city.name">Name</span></th>
-            <th><span jhiTranslate="brezaApp.city.zip">Zip</span></th>
-            <th><span jhiTranslate="brezaApp.city.state">State</span></th>
+            <th><span jhiTranslate="brezaApp.city.zipcode">Zipcode</span></th>
             <th></th>
             </tr>
             </thead>
@@ -25,8 +24,7 @@
             <tr *ngFor="let city of cities ;trackBy: trackId">
                 <td><a [routerLink]="['/city', city.id, 'view' ]">{{city.id}}</a></td>
                 <td>{{city.name}}</td>
-                <td>{{city.zip}}</td>
-                <td>{{city.state}}</td>
+                <td>{{city.zipcode}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

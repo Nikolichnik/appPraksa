@@ -16,7 +16,9 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="brezaApp.article.name">Name</span></th>
-            <th><span jhiTranslate="brezaApp.article.amount">Amount</span></th>
+            <th><span jhiTranslate="brezaApp.article.articleNumber">Article Number</span></th>
+            <th><span jhiTranslate="brezaApp.article.availableAmount">Available Amount</span></th>
+            <th><span jhiTranslate="brezaApp.article.price">Price</span></th>
             <th></th>
             </tr>
             </thead>
@@ -24,7 +26,9 @@
             <tr *ngFor="let article of articles ;trackBy: trackId">
                 <td><a [routerLink]="['/article', article.id, 'view' ]">{{article.id}}</a></td>
                 <td>{{article.name}}</td>
-                <td>{{article.amount}}</td>
+                <td>{{article.articleNumber}}</td>
+                <td>{{article.availableAmount}}</td>
+                <td>{{article.price}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

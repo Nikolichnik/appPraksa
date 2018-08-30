@@ -3,6 +3,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrezaArticleModule } from './article/article.module';
 import { BrezaCityModule } from './city/city.module';
 import { BrezaClientModule } from './client/client.module';
+import { BrezaPositionModule } from './position/position.module';
+import { BrezaEmployeeModule } from './employee/employee.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -11,6 +13,8 @@ import { BrezaClientModule } from './client/client.module';
         BrezaArticleModule,
         BrezaCityModule,
         BrezaClientModule,
+        BrezaPositionModule,
+        BrezaEmployeeModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

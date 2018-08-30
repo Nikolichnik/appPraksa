@@ -3,15 +3,39 @@
     "clientRootFolder": "",
     "relationships": [
         {
-            "relationshipName": "City",
+            "relationshipName": "city",
             "otherEntityName": "city",
             "relationshipType": "many-to-one",
-            "otherEntityField": "name"
+            "otherEntityField": "name",
+            "relationshipValidateRules": [
+                "required"
+            ]
         }
     ],
     "fields": [
         {
             "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "Number",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "email",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

@@ -21,35 +21,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="brezaApp.city.zip" for="field_zip">Zip</label>
-                    <input type="number" class="form-control" name="zip" id="field_zip"
-                        [(ngModel)]="city.zip" required min="10000" jhiMin="10000" max="20000" jhiMax="20000"/>
-                    <div [hidden]="!(editForm.controls.zip?.dirty && editForm.controls.zip?.invalid)">
+                    <label class="form-control-label" jhiTranslate="brezaApp.city.zipcode" for="field_zipcode">Zipcode</label>
+                    <input type="text" class="form-control" name="zipcode" id="field_zipcode"
+                        [(ngModel)]="city.zipcode" required/>
+                    <div [hidden]="!(editForm.controls.zipcode?.dirty && editForm.controls.zipcode?.invalid)">
                         <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.zip?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.zip?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 10000 }">
-                            This field should be at least 10000.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.zip?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 20000 }">
-                            This field cannot be more than 20000.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.zip?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="brezaApp.city.state" for="field_state">State</label>
-                    <input type="text" class="form-control" name="state" id="field_state"
-                        [(ngModel)]="city.state" required/>
-                    <div [hidden]="!(editForm.controls.state?.dirty && editForm.controls.state?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.state?.errors?.required" jhiTranslate="entity.validation.required">
+                        [hidden]="!editForm.controls.zipcode?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>

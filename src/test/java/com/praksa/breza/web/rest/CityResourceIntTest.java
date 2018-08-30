@@ -42,11 +42,8 @@ public class CityResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_ZIP = 10000;
-    private static final Integer UPDATED_ZIP = 10001;
-
-    private static final String DEFAULT_STATE = "AAAAAAAAAA";
-    private static final String UPDATED_STATE = "BBBBBBBBBB";
+    private static final String DEFAULT_ZIPCODE = "AAAAAAAAAA";
+    private static final String UPDATED_ZIPCODE = "BBBBBBBBBB";
 
     @Autowired
     private CityRepository cityRepository;
@@ -88,8 +85,7 @@ public class CityResourceIntTest {
     public static City createEntity(EntityManager em) {
         City city = new City()
             .name(DEFAULT_NAME)
-            .zip(DEFAULT_ZIP)
-            .state(DEFAULT_STATE);
+            .zipcode(DEFAULT_ZIPCODE);
         return city;
     }
 
@@ -114,8 +110,7 @@ public class CityResourceIntTest {
         assertThat(cityList).hasSize(databaseSizeBeforeCreate + 1);
         City testCity = cityList.get(cityList.size() - 1);
         assertThat(testCity.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testCity.getZip()).isEqualTo(DEFAULT_ZIP);
-        assertThat(testCity.getState()).isEqualTo(DEFAULT_STATE);
+        assertThat(testCity.getZipcode()).isEqualTo(DEFAULT_ZIPCODE);
     }
 
     @Test
@@ -157,28 +152,10 @@ public class CityResourceIntTest {
 
     @Test
     @Transactional
-    public void checkZipIsRequired() throws Exception {
+    public void checkZipcodeIsRequired() throws Exception {
         int databaseSizeBeforeTest = cityRepository.findAll().size();
         // set the field null
-        city.setZip(null);
-
-        // Create the City, which fails.
-
-        restCityMockMvc.perform(post("/api/cities")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(city)))
-            .andExpect(status().isBadRequest());
-
-        List<City> cityList = cityRepository.findAll();
-        assertThat(cityList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkStateIsRequired() throws Exception {
-        int databaseSizeBeforeTest = cityRepository.findAll().size();
-        // set the field null
-        city.setState(null);
+        city.setZipcode(null);
 
         // Create the City, which fails.
 
@@ -203,8 +180,7 @@ public class CityResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(city.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].zip").value(hasItem(DEFAULT_ZIP)))
-            .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())));
+            .andExpect(jsonPath("$.[*].zipcode").value(hasItem(DEFAULT_ZIPCODE.toString())));
     }
     
 
@@ -220,8 +196,7 @@ public class CityResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(city.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.zip").value(DEFAULT_ZIP))
-            .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()));
+            .andExpect(jsonPath("$.zipcode").value(DEFAULT_ZIPCODE.toString()));
     }
     @Test
     @Transactional
@@ -245,8 +220,7 @@ public class CityResourceIntTest {
         em.detach(updatedCity);
         updatedCity
             .name(UPDATED_NAME)
-            .zip(UPDATED_ZIP)
-            .state(UPDATED_STATE);
+            .zipcode(UPDATED_ZIPCODE);
 
         restCityMockMvc.perform(put("/api/cities")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -258,8 +232,7 @@ public class CityResourceIntTest {
         assertThat(cityList).hasSize(databaseSizeBeforeUpdate);
         City testCity = cityList.get(cityList.size() - 1);
         assertThat(testCity.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testCity.getZip()).isEqualTo(UPDATED_ZIP);
-        assertThat(testCity.getState()).isEqualTo(UPDATED_STATE);
+        assertThat(testCity.getZipcode()).isEqualTo(UPDATED_ZIPCODE);
     }
 
     @Test

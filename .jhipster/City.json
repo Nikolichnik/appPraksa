@@ -11,18 +11,7 @@
             ]
         },
         {
-            "fieldName": "zip",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required",
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": "10000",
-            "fieldValidateRulesMax": "20000"
-        },
-        {
-            "fieldName": "state",
+            "fieldName": "zipcode",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

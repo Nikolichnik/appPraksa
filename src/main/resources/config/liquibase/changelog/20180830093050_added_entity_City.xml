@@ -26,11 +26,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="zip" type="integer">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="state" type="varchar(255)">
+            <column name="zipcode" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
