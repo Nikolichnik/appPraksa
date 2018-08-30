@@ -3,11 +3,11 @@
     "clientRootFolder": "",
     "relationships": [
         {
-            "relationshipName": "city",
+            "relationshipName": "City",
             "otherEntityName": "city",
             "relationshipType": "many-to-one",
             "otherEntityField": "name",
-            "relationshipValidateRules": [
+            "fieldValidateRules": [
                 "required"
             ]
         }
