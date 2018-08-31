@@ -19,7 +19,8 @@
             "name": "Name",
             "articleNumber": "Article Number",
             "availableAmount": "Available Amount",
-            "price": "Price"
+            "price": "Price",
+            "type": "Type"
         }
     }
 }

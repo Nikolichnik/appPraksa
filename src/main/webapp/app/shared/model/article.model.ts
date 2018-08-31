@@ -1,9 +1,12 @@
+import { IType } from 'app/shared/model//type.model';
+
 export interface IArticle {
     id?: number;
     name?: string;
     articleNumber?: string;
     availableAmount?: number;
     price?: number;
+    type?: IType;
 }
 
 export class Article implements IArticle {
@@ -12,6 +15,7 @@ export class Article implements IArticle {
         public name?: string,
         public articleNumber?: string,
         public availableAmount?: number,
-        public price?: number
+        public price?: number,
+        public type?: IType
     ) {}
 }

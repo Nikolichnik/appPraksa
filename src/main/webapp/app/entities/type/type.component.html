@@ -1,56 +1,46 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="brezaApp.article.home.title">Articles</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-article" [routerLink]="['/article/new']">
+        <span jhiTranslate="brezaApp.type.home.title">Types</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-type" [routerLink]="['/type/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="brezaApp.article.home.createLabel">
-            Create new Article
+            <span  jhiTranslate="brezaApp.type.home.createLabel">
+            Create new Type
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="table-responsive" *ngIf="articles">
+    <div class="table-responsive" *ngIf="types">
         <table class="table table-striped">
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="brezaApp.article.name">Name</span></th>
-            <th><span jhiTranslate="brezaApp.article.articleNumber">Article Number</span></th>
-            <th><span jhiTranslate="brezaApp.article.availableAmount">Available Amount</span></th>
-            <th><span jhiTranslate="brezaApp.article.price">Price</span></th>
-            <th><span jhiTranslate="brezaApp.article.type">Type</span></th>
+            <th><span jhiTranslate="brezaApp.type.name">Name</span></th>
+            <th><span jhiTranslate="brezaApp.type.description">Description</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let article of articles ;trackBy: trackId">
-                <td><a [routerLink]="['/article', article.id, 'view' ]">{{article.id}}</a></td>
-                <td>{{article.name}}</td>
-                <td>{{article.articleNumber}}</td>
-                <td>{{article.availableAmount}}</td>
-                <td>{{article.price}}</td>
-                <td>
-                    <div *ngIf="article.type">
-                        <a [routerLink]="['../type', article.type?.id, 'view' ]" >{{article.type?.name}}</a>
-                    </div>
-                </td>
+            <tr *ngFor="let type of types ;trackBy: trackId">
+                <td><a [routerLink]="['/type', type.id, 'view' ]">{{type.id}}</a></td>
+                <td>{{type.name}}</td>
+                <td>{{type.description}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['/article', article.id, 'view' ]"
+                                [routerLink]="['/type', type.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/article', article.id, 'edit']"
+                                [routerLink]="['/type', type.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'type/'+ type.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

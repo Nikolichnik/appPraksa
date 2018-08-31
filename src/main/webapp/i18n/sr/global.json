@@ -12,6 +12,7 @@
                 "client": "Client",
                 "position": "Position",
                 "employee": "Employee",
+                "type": "Type",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
