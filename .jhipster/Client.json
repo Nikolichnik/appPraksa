@@ -30,7 +30,7 @@
         },
         {
             "fieldName": "phoneNumber",
-            "fieldType": "Integer",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]

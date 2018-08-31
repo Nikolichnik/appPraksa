@@ -31,7 +31,7 @@ public class Client implements Serializable {
 
     @NotNull
     @Column(name = "phone_number", nullable = false)
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @NotNull
     @Column(name = "email", nullable = false)
@@ -77,16 +77,16 @@ public class Client implements Serializable {
         this.address = address;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public Client phoneNumber(Integer phoneNumber) {
+    public Client phoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -143,7 +143,7 @@ public class Client implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", address='" + getAddress() + "'" +
-            ", phoneNumber=" + getPhoneNumber() +
+            ", phoneNumber='" + getPhoneNumber() + "'" +
             ", email='" + getEmail() + "'" +
             "}";
     }

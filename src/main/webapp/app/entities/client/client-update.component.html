@@ -33,16 +33,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.client.phoneNumber" for="field_phoneNumber">Phone Number</label>
-                    <input type="number" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                    <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
                         [(ngModel)]="client.phoneNumber" required/>
                     <div [hidden]="!(editForm.controls.phoneNumber?.dirty && editForm.controls.phoneNumber?.invalid)">
                         <small class="form-text text-danger"
                         [hidden]="!editForm.controls.phoneNumber?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.phoneNumber?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
                         </small>
                     </div>
                 </div>
