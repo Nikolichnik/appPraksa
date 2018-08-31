@@ -2,12 +2,12 @@
 Navbar
 ========================================================================== */
 .navbar-version {
-    font-size: 10px;
-    color: #ccc;
+    font-size: 8px;
+    color: rgba(204, 204, 204, 0.829);
 }
 
 .jh-navbar {
-    background-color: #353d47;
+    background-color: #353d47c9;
     padding: 0.2em 1em;
 }
 

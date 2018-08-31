@@ -21,3 +21,8 @@ Main page styles
         background-size: contain;
     }
 }
+
+body {
+    background: rgba(7, 0, 34, 0.238);
+    background-image: url('../../content/images/spaceWarehouse.jpg');
+}

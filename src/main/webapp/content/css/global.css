@@ -11,7 +11,9 @@ h4 {
 }
 
 body {
-    background: #e4e5e6;
+    background: rgba(7, 0, 34, 0.238);
+    background-image: url('../../content/images/spaceWarehouse.jpg');
+    background-size: cover;
 }
 
 a {
@@ -48,12 +50,20 @@ Generic styles
     border-left: 5px solid red;
 }
 
+.a {
+    color: azure;
+}
+
 /* other generic styles */
 
 .jh-card {
     padding: 1.5%;
     margin-top: 20px;
     border: none;
+}
+
+.myCard {
+    background: rgba(238, 238, 238, 0.455);
 }
 
 .error {
