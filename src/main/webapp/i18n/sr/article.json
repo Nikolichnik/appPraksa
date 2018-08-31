@@ -3,24 +3,24 @@
     "brezaApp": {
         "article" : {
             "home": {
-                "title": "Articles",
-                "createLabel": "Kreiraj novi Article",
-                "createOrEditLabel": "Kreirajte ili izmenite Article"
+                "title": "Artikli",
+                "createLabel": "Kreiraj novi artikl",
+                "createOrEditLabel": "Kreirajte ili izmenite artikl"
             },
-            "created": "Kreiran je novi Article pod nazivom {{ param }}",
-            "updated": "Article pod nazivom {{ param }} je ažuriran",
-            "deleted": "Article pod nazivom {{ param }} je obrisan",
+            "created": "Kreiran je novi artikl pod nazivom {{ param }}",
+            "updated": "Artikl pod nazivom {{ param }} je ažuriran",
+            "deleted": "Artikl pod nazivom {{ param }} je obrisan",
             "delete": {
-                "question": "Da li ste sigurni da želite da obrišete Article pod nazivom {{ id }}?"
+                "question": "Da li ste sigurni da želite da obrišete artikl pod nazivom {{ id }}?"
             },
             "detail": {
-                "title": "Article"
+                "title": "Artikl"
             },
             "name": "Name",
-            "articleNumber": "Article Number",
-            "availableAmount": "Available Amount",
-            "price": "Price",
-            "type": "Type"
+            "articleNumber": "Broj artikla",
+            "availableAmount": "Dostupna količina",
+            "price": "Cena",
+            "type": "Tip"
         }
     }
 }
