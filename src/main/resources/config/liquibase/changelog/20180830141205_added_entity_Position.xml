@@ -28,7 +28,15 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+
+        <loadData 
+            encoding="UTF-8"
+            separator=";"
+            file="config/liquibase/position.csv"           
+            tableName="position">
+        </loadData>
         
     </changeSet>
-    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->   
+
 </databaseChangeLog>
