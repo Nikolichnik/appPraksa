@@ -1,7 +1,7 @@
 {
     "home": {
-        "title": "Welcome, beloved customer!",
-        "subtitle": "This is your warehouse",
+        "title": "Welcome to TransOrbital!",
+        "subtitle": "Your warehouse above clouds.",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."
         },

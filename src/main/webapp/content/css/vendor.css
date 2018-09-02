@@ -1,2 +1,17 @@
 /* after changing this file run 'yarn run webpack:build' */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+a {
+    color: #530f03;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #664d01;
+    font-weight: bold;
+}
+
+.alert {
+    background-color: rgba(184, 184, 184, 0.796);
+    border: none;
+}
