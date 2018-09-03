@@ -1,7 +1,7 @@
 {
     "home": {
-        "title": "Dobrodošli, Java Hipsteru!",
-        "subtitle": "Ovo je Vaša početna stranica",
+        "title": "Dobrodošli u transOrbital",
+        "subtitle": "Vaše skladište iznad oblaka.",
         "logged": {
             "message": "Prijavljeni ste kao korisnik \"{{username}}\"."
         },

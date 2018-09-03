@@ -26,4 +26,6 @@ Main page styles
     display: inline-block;
     vertical-align: middle;
     float: none;
+    margin-top: 140px;
+    padding-right: 150px;
 }
