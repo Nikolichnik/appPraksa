@@ -1,3 +1,4 @@
+import { Position } from './../../shared/model/position.model';
 import { IEmployee } from './../../shared/model/employee.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
@@ -22,7 +23,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     settings = {
         columns: {
             id: {
-                title: 'ID'
+                title: 'ID',
+                width: '70px'
             },
             fullName: {
                 title: 'Full name'
