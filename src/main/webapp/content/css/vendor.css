@@ -62,3 +62,8 @@ a:hover {
 .dropdown-item.active:hover {
     background-color: rgb(78, 78, 78);
 }
+
+._nghost-c11 a {
+    color: rgb(75, 32, 32);
+    font-weight: bold;
+}

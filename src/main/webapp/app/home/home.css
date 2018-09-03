@@ -29,3 +29,7 @@ Main page styles
     margin-top: 140px;
     padding-right: 150px;
 }
+
+.logoContainer {
+    justify-content: center;
+}
