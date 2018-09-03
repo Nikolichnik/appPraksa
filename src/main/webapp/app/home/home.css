@@ -21,3 +21,9 @@ Main page styles
         background-size: contain;
     }
 }
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
