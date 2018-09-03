@@ -20,12 +20,13 @@ export class EmployeeComponent implements OnInit, OnDestroy {
             id: {
                 title: 'ID'
             },
-            firstName: {
-                title: 'First name'
+            employee: {
+                title: 'Full name',
+                valuePrepareFunction: (employee: IEmployee) => employee.firstName + ' ' + employee.lastName
             },
-            lastName: {
-                title: 'Last name'
-            },
+            // lastName: {
+            //     title: 'Last name'
+            // },
             position: {
                 title: 'Position',
                 valuePrepareFunction: position => (position ? position.name : 'N/A')
