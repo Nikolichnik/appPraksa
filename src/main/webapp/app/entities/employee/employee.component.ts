@@ -6,6 +6,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { Principal } from 'app/core';
 import { EmployeeService } from './employee.service';
+import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
     selector: 'jhi-employee',
@@ -15,14 +16,16 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     employees: IEmployee[];
     currentAccount: any;
     eventSubscriber: Subscription;
+
+    data: LocalDataSource;
+
     settings = {
         columns: {
             id: {
                 title: 'ID'
             },
-            employee: {
-                title: 'Full name',
-                valuePrepareFunction: employee => (<IEmployee>employee).firstName + ' ' + (<IEmployee>employee).lastName
+            fullName: {
+                title: 'Full name'
             },
             // lastName: {
             //     title: 'Last name'
@@ -45,6 +48,15 @@ export class EmployeeComponent implements OnInit, OnDestroy {
         this.employeeService.query().subscribe(
             (res: HttpResponse<IEmployee[]>) => {
                 this.employees = res.body;
+                this.data = new LocalDataSource();
+                for (const employee of res.body) {
+                    if (employee.firstName && employee.lastName) {
+                        employee.fullName = employee.firstName + ' ' + employee.lastName;
+                    } else {
+                        employee.fullName = 'N/A';
+                    }
+                    this.data.add(employee);
+                }
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );

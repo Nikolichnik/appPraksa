@@ -4,6 +4,7 @@ export interface IEmployee {
     id?: number;
     firstName?: string;
     lastName?: string;
+    fullName?: string;
     position?: IPosition;
 }
 
