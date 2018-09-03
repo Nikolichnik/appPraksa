@@ -15,6 +15,28 @@ export class ClientComponent implements OnInit, OnDestroy {
     clients: IClient[];
     currentAccount: any;
     eventSubscriber: Subscription;
+    settings = {
+        columns: {
+            id: {
+                title: 'ID'
+            },
+            name: {
+                title: 'Name'
+            },
+            address: {
+                title: 'Address'
+            },
+            phoneNumber: {
+                title: 'Phone number'
+            },
+            email: {
+                title: 'Email'
+            },
+            city: {
+                title: 'City'
+            }
+        }
+    };
 
     constructor(
         private clientService: ClientService,

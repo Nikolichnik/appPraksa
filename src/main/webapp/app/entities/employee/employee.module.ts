@@ -2,6 +2,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BrezaSharedModule } from 'app/shared';
+
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 import {
     EmployeeComponent,
     EmployeeDetailComponent,
@@ -15,7 +18,7 @@ import {
 const ENTITY_STATES = [...employeeRoute, ...employeePopupRoute];
 
 @NgModule({
-    imports: [BrezaSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [BrezaSharedModule, RouterModule.forChild(ENTITY_STATES), Ng2SmartTableModule],
     declarations: [
         EmployeeComponent,
         EmployeeDetailComponent,

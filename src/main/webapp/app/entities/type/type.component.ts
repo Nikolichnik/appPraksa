@@ -15,6 +15,20 @@ export class TypeComponent implements OnInit, OnDestroy {
     types: IType[];
     currentAccount: any;
     eventSubscriber: Subscription;
+    settings = {
+        columns: {
+            id: {
+                title: 'ID'
+            },
+            name: {
+                title: 'Name'
+            },
+            description: {
+                title: 'Description'
+            }
+        }
+    };
+    data;
 
     constructor(
         private typeService: TypeService,
@@ -26,7 +40,7 @@ export class TypeComponent implements OnInit, OnDestroy {
     loadAll() {
         this.typeService.query().subscribe(
             (res: HttpResponse<IType[]>) => {
-                this.types = res.body;
+                this.data = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );

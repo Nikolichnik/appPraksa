@@ -15,6 +15,22 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     employees: IEmployee[];
     currentAccount: any;
     eventSubscriber: Subscription;
+    settings = {
+        columns: {
+            id: {
+                title: 'ID'
+            },
+            firstName: {
+                title: 'First name'
+            },
+            lastName: {
+                title: 'Last name'
+            },
+            position: {
+                title: 'Position'
+            }
+        }
+    };
 
     constructor(
         private employeeService: EmployeeService,

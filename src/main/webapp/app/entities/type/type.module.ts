@@ -12,10 +12,12 @@ import {
     typePopupRoute
 } from './';
 
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 const ENTITY_STATES = [...typeRoute, ...typePopupRoute];
 
 @NgModule({
-    imports: [BrezaSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [BrezaSharedModule, RouterModule.forChild(ENTITY_STATES), Ng2SmartTableModule],
     declarations: [TypeComponent, TypeDetailComponent, TypeUpdateComponent, TypeDeleteDialogComponent, TypeDeletePopupComponent],
     entryComponents: [TypeComponent, TypeUpdateComponent, TypeDeleteDialogComponent, TypeDeletePopupComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

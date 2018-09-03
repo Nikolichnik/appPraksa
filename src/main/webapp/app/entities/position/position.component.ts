@@ -15,6 +15,16 @@ export class PositionComponent implements OnInit, OnDestroy {
     positions: IPosition[];
     currentAccount: any;
     eventSubscriber: Subscription;
+    settings = {
+        columns: {
+            id: {
+                title: 'ID'
+            },
+            name: {
+                title: 'Name'
+            }
+        }
+    };
 
     constructor(
         private positionService: PositionService,

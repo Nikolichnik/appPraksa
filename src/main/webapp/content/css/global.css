@@ -50,6 +50,7 @@ Generic styles
 
 .myCard {
     background: rgba(238, 238, 238, 0.401);
+    color: rgb(221, 221, 221);
 }
 
 .error {

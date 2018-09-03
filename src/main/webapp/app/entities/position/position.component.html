@@ -10,7 +10,7 @@
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="table-responsive" *ngIf="positions">
+    <!-- <div class="table-responsive" *ngIf="positions">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -50,5 +50,8 @@
             </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
+
+    <ng2-smart-table [settings]="settings" [source]="positions"></ng2-smart-table>
+
 </div>
