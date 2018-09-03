@@ -6,6 +6,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IArticle } from 'app/shared/model/article.model';
 import { Principal } from 'app/core';
 import { ArticleService } from './article.service';
+import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
     selector: 'jhi-article',
@@ -15,6 +16,8 @@ export class ArticleComponent implements OnInit, OnDestroy {
     articles: IArticle[];
     currentAccount: any;
     eventSubscriber: Subscription;
+
+    data: LocalDataSource;
 
     settings = {
         columns: {
@@ -33,9 +36,8 @@ export class ArticleComponent implements OnInit, OnDestroy {
             price: {
                 title: 'Price'
             },
-            type: {
-                title: 'Type',
-                valuePrepareFunction: type => (type ? type.name : 'N/A')
+            articleType: {
+                title: 'Type'
             }
         }
     };
@@ -53,6 +55,15 @@ export class ArticleComponent implements OnInit, OnDestroy {
         this.articleService.query().subscribe(
             (res: HttpResponse<IArticle[]>) => {
                 this.articles = res.body;
+                this.data = new LocalDataSource();
+                for (const article of res.body) {
+                    if (article.type) {
+                        article.articleType = article.type.name;
+                    } else {
+                        article.articleType = 'N/A';
+                    }
+                    this.data.add(article);
+                }
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );

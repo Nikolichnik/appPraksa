@@ -8,5 +8,5 @@ id;name;article_number;available_amount;price;type_id
 7;Torba;17;50;5300;null
 8;Računar;18;60;15000;2
 9;Monitor;19;75;10000;2
-10;Miš;20;100;300;null
+10;Miš;20;100;300;2
 11;Tastatura;21;99;250;2

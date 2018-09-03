@@ -1,9 +1,9 @@
+import { IEmployee } from './../../shared/model/employee.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { IEmployee } from 'app/shared/model/employee.model';
 import { Principal } from 'app/core';
 import { EmployeeService } from './employee.service';
 
@@ -22,7 +22,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
             },
             employee: {
                 title: 'Full name',
-                valuePrepareFunction: (employee: IEmployee) => employee.firstName + ' ' + employee.lastName
+                valuePrepareFunction: employee => (<IEmployee>employee).firstName + ' ' + (<IEmployee>employee).lastName
             },
             // lastName: {
             //     title: 'Last name'

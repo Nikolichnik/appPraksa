@@ -7,6 +7,7 @@ export interface IArticle {
     availableAmount?: number;
     price?: number;
     type?: IType;
+    articleType?: string;
 }
 
 export class Article implements IArticle {
