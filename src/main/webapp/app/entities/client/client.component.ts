@@ -33,10 +33,13 @@ export class ClientComponent implements OnInit, OnDestroy {
                 title: 'Email'
             },
             city: {
-                title: 'City'
+                title: 'City',
+                valuePrepareFunction: city => (city ? city.name : 'N/A')
             }
         }
     };
+
+    // settings = Object.assign({}, this.newSettings);
 
     constructor(
         private clientService: ClientService,

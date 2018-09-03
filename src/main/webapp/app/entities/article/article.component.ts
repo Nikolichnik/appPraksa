@@ -15,6 +15,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     articles: IArticle[];
     currentAccount: any;
     eventSubscriber: Subscription;
+
     settings = {
         columns: {
             id: {
@@ -33,10 +34,13 @@ export class ArticleComponent implements OnInit, OnDestroy {
                 title: 'Price'
             },
             type: {
-                title: 'Type'
+                title: 'Type',
+                valuePrepareFunction: type => (type ? type.name : 'N/A')
             }
         }
     };
+
+    // settings = Object.assign({}, this.newSettings);
 
     constructor(
         private articleService: ArticleService,
