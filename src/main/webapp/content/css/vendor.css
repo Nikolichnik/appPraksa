@@ -63,7 +63,7 @@ a:hover {
     background-color: rgb(78, 78, 78);
 }
 
-._nghost-c11 a {
-    color: rgb(75, 32, 32);
+.ng2-smart-action a {
+    color: rgb(75, 32, 32) !important;
     font-weight: bold;
 }

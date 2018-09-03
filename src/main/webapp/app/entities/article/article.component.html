@@ -10,7 +10,7 @@
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
-    <div class="table-responsive" *ngIf="articles">
+    <!-- <div class="table-responsive" *ngIf="articles">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -62,8 +62,8 @@
             </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
 
-    <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+    <ng2-smart-table [settings]="settings" [source]="articles"></ng2-smart-table>
 
 </div>

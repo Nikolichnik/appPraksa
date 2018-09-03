@@ -91,6 +91,11 @@ a:hover {
     cursor: pointer;
 }
 
+.ng2-smart-action a {
+    color: rgb(75, 32, 32) !important;
+    font-weight: bold;
+}
+
 .hand,
 [jhisortby] {
     cursor: pointer;
