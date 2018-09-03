@@ -2,7 +2,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 a {
-    color: #530f03;
+    color: rgb(75, 32, 32);
     font-weight: bold;
 }
 
@@ -14,4 +14,51 @@ a:hover {
 .alert {
     background-color: rgba(184, 184, 184, 0.796);
     border: none;
+}
+
+.btn-primary {
+    background-color: rgba(78, 78, 78, 0.83);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: rgba(47, 47, 47, 0.83);
+    border: none;
+}
+
+.btn-primary:focus {
+    background-color: rgba(32, 32, 32, 0.83);
+    border: none;
+}
+
+.btn-sm:focus {
+    background-color: rgba(32, 32, 32, 0.83);
+    border: none;
+}
+
+.btn:focus {
+    background-color: rgba(32, 32, 32, 0.83);
+    border: none;
+}
+
+.btn-info {
+    background-color: rgba(104, 104, 104, 0.83);
+    border: none;
+}
+
+.btn-info:focus {
+    background-color: rgba(88, 88, 88, 0.83);
+    border: none;
+}
+
+.btn-danger {
+    background-color: rgba(75, 32, 32, 0.83);
+    border: none;
+}
+
+.dropdown-item:focus,
+.dropdown-item.active,
+.dropdown-item.active:focus,
+.dropdown-item.active:hover {
+    background-color: rgb(78, 78, 78);
 }

@@ -135,5 +135,5 @@
         "idexists": "Novi {{ entityName }} ne može sadržati ID",
         "idnull": "Invalid ID"
     },
-    "footer": "Ovo je vaše podnožje"
+    "footer": ""
 }

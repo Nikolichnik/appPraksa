@@ -11,19 +11,9 @@ h4 {
 }
 
 body {
-    background: rgba(7, 0, 34, 0.238);
-    background-image: url('../../content/images/spaceWarehouse.jpg');
+    background: rgba(34, 0, 0, 0.238);
+    background-image: url('../../content/images/render.jpg');
     background-size: cover;
-}
-
-a {
-    color: #530f03;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #664d01;
-    font-weight: bold;
 }
 
 /* ==========================================================================
@@ -91,6 +81,7 @@ Generic styles
 
 .footer {
     border-top: 1px solid rgba(0, 0, 0, 0.125);
+    height: 250px;
 }
 
 /* ==========================================================================
@@ -211,6 +202,7 @@ entity detail page css
 /* ==========================================================================
 ui bootstrap tweaks
 ========================================================================== */
+
 .nav,
 .pagination,
 .carousel,

@@ -6,7 +6,7 @@ Main page styles
     display: inline-block;
     width: 400px;
     height: 497px;
-    background: url('../../content/images/warehouseLogo.png') no-repeat center;
+    background: url('../../content/images/logo_orbit.png') no-repeat center;
     background-size: contain;
 }
 
@@ -17,12 +17,7 @@ Main page styles
     only screen and (min-resolution: 192dpi),
     only screen and (min-resolution: 2dppx) {
     .hipster {
-        background: url('../../content/images/warehouseLogo.png') no-repeat center;
+        background: url('../../content/images/logo_orbit.png') no-repeat center;
         background-size: contain;
     }
-}
-
-body {
-    background: rgba(7, 0, 34, 0.238);
-    background-image: url('../../content/images/spaceWarehouse.jpg');
 }
