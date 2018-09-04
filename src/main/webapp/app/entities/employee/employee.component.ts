@@ -32,9 +32,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
             // lastName: {
             //     title: 'Last name'
             // },
-            position: {
-                title: 'Position',
-                valuePrepareFunction: position => (position ? position.name : 'N/A')
+            positionName: {
+                title: 'Position'
             }
         }
     };
@@ -56,6 +55,11 @@ export class EmployeeComponent implements OnInit, OnDestroy {
                         employee.fullName = employee.firstName + ' ' + employee.lastName;
                     } else {
                         employee.fullName = 'N/A';
+                    }
+                    if (employee.position) {
+                        employee.positionName = employee.position.name;
+                    } else {
+                        employee.positionName = 'N/A';
                     }
                     this.data.add(employee);
                 }
