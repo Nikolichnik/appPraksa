@@ -21,14 +21,17 @@ export class ClientComponent implements OnInit, OnDestroy {
         actions: {
             edit: false,
             delete: false,
+            // {
+            //     confirmDelete: true,
+            // },
             custom: [
                 {
                     name: 'view',
-                    title: 'View'
+                    title: 'View '
                 },
                 {
                     name: 'edit',
-                    title: 'Edit'
+                    title: 'Edit '
                 },
                 {
                     name: 'delete',
@@ -129,7 +132,7 @@ export class ClientComponent implements OnInit, OnDestroy {
         } else if (event.action === 'edit') {
             this.router.navigateByUrl('client/' + event.data.id + '/edit');
         } else if (event.action === 'delete') {
-            this.router.navigateByUrl('client/' + event.data.id + '/delete');
+            this.router.navigate(['/', { outlets: { popup: 'client/' + event.data.id + '/delete' } }]);
         }
     }
 }

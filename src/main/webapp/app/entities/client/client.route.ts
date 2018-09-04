@@ -9,7 +9,7 @@ import { ClientService } from './client.service';
 import { ClientComponent } from './client.component';
 import { ClientDetailComponent } from './client-detail.component';
 import { ClientUpdateComponent } from './client-update.component';
-import { ClientDeletePopupComponent } from './client-delete-dialog.component';
+import { ClientDeletePopupComponent, ClientDeleteDialogComponent } from './client-delete-dialog.component';
 import { IClient } from 'app/shared/model/client.model';
 
 @Injectable({ providedIn: 'root' })
