@@ -131,4 +131,10 @@ export class ClientComponent implements OnInit, OnDestroy {
             this.router.navigate(['/', { outlets: { popup: 'client/' + event.data.id + '/delete' } }]);
         }
     }
+
+    timeoutFunction() {
+        setTimeout(function() {
+            alert('I did!');
+        }, 2000);
+    }
 }
