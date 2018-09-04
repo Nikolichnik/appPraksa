@@ -8,6 +8,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Principal } from 'app/core';
 import { EmployeeService } from './employee.service';
 import { LocalDataSource } from 'ng2-smart-table';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'jhi-employee',
@@ -21,6 +22,29 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     data: LocalDataSource;
 
     settings = {
+        actions: {
+            edit: false,
+            delete: false,
+            custom: [
+                {
+                    name: 'view',
+                    title: 'View '
+                },
+                {
+                    name: 'edit',
+                    title: 'Edit '
+                },
+                {
+                    name: 'delete',
+                    title: 'Delete'
+                }
+            ]
+        },
+        mode: 'external',
+        add: {
+            create: true,
+            addButtonContent: 'Create new Employee'
+        },
         columns: {
             id: {
                 title: 'ID',
@@ -42,7 +66,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
         private employeeService: EmployeeService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
-        private principal: Principal
+        private principal: Principal,
+        private router: Router
     ) {}
 
     loadAll() {
@@ -90,5 +115,21 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
     private onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    add() {
+        this.router.navigateByUrl('/employee/new');
+    }
+
+    onCustom(event) {
+        // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+
+        if (event.action === 'view') {
+            this.router.navigateByUrl('employee/' + event.data.id + '/view');
+        } else if (event.action === 'edit') {
+            this.router.navigateByUrl('employee/' + event.data.id + '/edit');
+        } else if (event.action === 'delete') {
+            this.router.navigate(['/', { outlets: { popup: 'employee/' + event.data.id + '/delete' } }]);
+        }
     }
 }

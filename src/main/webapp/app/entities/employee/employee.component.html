@@ -60,6 +60,6 @@
         </table>
     </div> -->
 
-    <ng2-smart-table [settings]="settings" [source]="employees"></ng2-smart-table>
+    <ng2-smart-table [settings]="settings" [source]="employees" (create)="add()" (custom)="onCustom($event)" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
 
 </div>

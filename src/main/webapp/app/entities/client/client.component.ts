@@ -21,9 +21,6 @@ export class ClientComponent implements OnInit, OnDestroy {
         actions: {
             edit: false,
             delete: false,
-            // {
-            //     confirmDelete: true,
-            // },
             custom: [
                 {
                     name: 'view',
@@ -124,7 +121,6 @@ export class ClientComponent implements OnInit, OnDestroy {
     }
 
     onCustom(event) {
-        // console.log('Aaaaaaaaaa');
         // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
 
         if (event.action === 'view') {
