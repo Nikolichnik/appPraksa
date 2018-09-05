@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="onlineOrderItem">
+            <h2><span jhiTranslate="brezaApp.onlineOrderItem.detail.title">Online Order Item</span> {{onlineOrderItem.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="brezaApp.onlineOrderItem.orderedAmount">Ordered Amount</span></dt>
+                <dd>
+                    <span>{{onlineOrderItem.orderedAmount}}</span>
+                </dd>
+                <dt><span jhiTranslate="brezaApp.onlineOrderItem.itemPrice">Item Price</span></dt>
+                <dd>
+                    <span>{{onlineOrderItem.itemPrice}}</span>
+                </dd>
+                <dt><span jhiTranslate="brezaApp.onlineOrderItem.onlineOrderItem">Online Order Item</span></dt>
+                <dd>
+                    <div *ngIf="onlineOrderItem.onlineOrderItem">
+                        <a [routerLink]="['/online-order', onlineOrderItem.onlineOrderItem?.id, 'view']">{{onlineOrderItem.onlineOrderItem?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/online-order-item', onlineOrderItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

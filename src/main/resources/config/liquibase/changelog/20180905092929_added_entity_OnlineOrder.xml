@@ -15,34 +15,27 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Vehicle.
+        Added the entity OnlineOrder.
     -->
-    <changeSet id="20180904090205-1" author="jhipster">
-        <createTable tableName="vehicle">
+    <changeSet id="20180905092929-1" author="jhipster">
+        <createTable tableName="online_order">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="vehicle_number" type="varchar(255)">
+            <column name="address" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="brand" type="varchar(255)">
+            <column name="phone_number" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="model" type="varchar(255)">
-                <constraints nullable="false" />
+            <column name="total_price" type="integer">
+                <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-
-        <loadData
-            encoding="UTF-8"
-            separator=";"
-            file="config/liquibase/vehicle.csv"           
-            tableName="vehicle">
-        </loadData>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

@@ -1,0 +1,36 @@
+{
+    "name": "OnlineOrderItem",
+    "fields": [
+        {
+            "fieldName": "orderedAmount",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "itemPrice",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "onlineOrderItem",
+            "otherEntityName": "onlineOrder",
+            "otherEntityField": "id",
+            "relationshipValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180905092930",
+    "entityTableName": "online_order_item",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
