@@ -1,13 +1,13 @@
 /* after changing this file run 'yarn run webpack:build' */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-a {
-    color: rgb(75, 32, 32);
-    font-weight: bold;
+a:hover {
+    cursor: pointer;
+    color: rgb(118, 225, 255);
 }
 
-a:hover {
-    color: #664d01;
+a {
+    color: rgb(189, 194, 195);
     font-weight: bold;
 }
 
@@ -63,7 +63,7 @@ a:hover {
     background-color: rgb(78, 78, 78);
 }
 
-.ng2-smart-action a {
-    color: rgb(31, 25, 68) !important;
+/* a {
+    color: rgb(195, 186, 255) !important;
     font-weight: bold;
-}
+} */

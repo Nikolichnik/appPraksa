@@ -88,14 +88,6 @@ Generic styles
 /* ==========================================================================
 make sure browsers use the pointer cursor for anchors, even with no href
 ========================================================================== */
-a:hover {
-    cursor: pointer;
-}
-
-.ng2-smart-action a {
-    color: rgb(31, 25, 68) !important;
-    font-weight: bold;
-}
 
 .hand,
 [jhisortby] {

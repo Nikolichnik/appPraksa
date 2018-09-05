@@ -1,4 +1,4 @@
-id;ordered_amount;item_price;online_order;article
+id;ordered_amount;item_price;online_order_id;article_id
 1;50;100;3;4
 2;13;300;2;5
 3;33;333;1;7
