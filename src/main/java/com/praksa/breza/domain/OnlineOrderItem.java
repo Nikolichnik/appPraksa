@@ -23,7 +23,7 @@ public class OnlineOrderItem implements Serializable {
 
     @NotNull
     @Column(name = "ordered_amount", nullable = false)
-    private String orderedAmount;
+    private Integer orderedAmount;
 
     @Column(name = "item_price")
     private Integer itemPrice;
@@ -47,16 +47,16 @@ public class OnlineOrderItem implements Serializable {
         this.id = id;
     }
 
-    public String getOrderedAmount() {
+    public Integer getOrderedAmount() {
         return orderedAmount;
     }
 
-    public OnlineOrderItem orderedAmount(String orderedAmount) {
+    public OnlineOrderItem orderedAmount(Integer orderedAmount) {
         this.orderedAmount = orderedAmount;
         return this;
     }
 
-    public void setOrderedAmount(String orderedAmount) {
+    public void setOrderedAmount(Integer orderedAmount) {
         this.orderedAmount = orderedAmount;
     }
 
@@ -124,7 +124,7 @@ public class OnlineOrderItem implements Serializable {
     public String toString() {
         return "OnlineOrderItem{" +
             "id=" + getId() +
-            ", orderedAmount='" + getOrderedAmount() + "'" +
+            ", orderedAmount=" + getOrderedAmount() +
             ", itemPrice=" + getItemPrice() +
             "}";
     }

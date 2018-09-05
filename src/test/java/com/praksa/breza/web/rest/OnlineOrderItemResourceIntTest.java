@@ -41,8 +41,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = BrezaApp.class)
 public class OnlineOrderItemResourceIntTest {
 
-    private static final String DEFAULT_ORDERED_AMOUNT = "AAAAAAAAAA";
-    private static final String UPDATED_ORDERED_AMOUNT = "BBBBBBBBBB";
+    private static final Integer DEFAULT_ORDERED_AMOUNT = 1;
+    private static final Integer UPDATED_ORDERED_AMOUNT = 2;
 
     private static final Integer DEFAULT_ITEM_PRICE = 1;
     private static final Integer UPDATED_ITEM_PRICE = 2;
@@ -173,7 +173,7 @@ public class OnlineOrderItemResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(onlineOrderItem.getId().intValue())))
-            .andExpect(jsonPath("$.[*].orderedAmount").value(hasItem(DEFAULT_ORDERED_AMOUNT.toString())))
+            .andExpect(jsonPath("$.[*].orderedAmount").value(hasItem(DEFAULT_ORDERED_AMOUNT)))
             .andExpect(jsonPath("$.[*].itemPrice").value(hasItem(DEFAULT_ITEM_PRICE)));
     }
     
@@ -189,7 +189,7 @@ public class OnlineOrderItemResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(onlineOrderItem.getId().intValue()))
-            .andExpect(jsonPath("$.orderedAmount").value(DEFAULT_ORDERED_AMOUNT.toString()))
+            .andExpect(jsonPath("$.orderedAmount").value(DEFAULT_ORDERED_AMOUNT))
             .andExpect(jsonPath("$.itemPrice").value(DEFAULT_ITEM_PRICE));
     }
     @Test
