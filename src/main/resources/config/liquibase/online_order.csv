@@ -1,5 +1,5 @@
-id;address;phone_number;total_price
-1;Beogradska 33;(011)388929;5000
-2;Peril St. 13;(0433)849201;17000
-3;Andromeda 3;(99$2)38&5#99;430000
-4;Iza Ćoška 1;(011)930217;50
+id;address;phone_number;total_price;city;client
+1;Beogradska 33;(011)388929;5000;1;2
+2;Peril St. 13;(0433)849201;17000;3;1
+3;Andromeda 3;(99$2)38&5#99;430000;2;3
+4;Iza Ćoška 1;(011)930217;50;1;1
