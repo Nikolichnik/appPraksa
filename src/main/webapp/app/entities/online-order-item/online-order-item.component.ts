@@ -42,24 +42,27 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
         mode: 'external',
         add: {
             create: true,
-            addButtonContent: 'Create new Online Order'
+            addButtonContent: 'Create new Online Order Item'
         },
         columns: {
             id: {
                 title: 'ID',
                 width: '70px'
             },
-            orderedAmount: {
-                title: 'Ordered amount'
-            },
-            itemPrice: {
-                title: 'Item price'
-            },
             onlineOrderId: {
                 title: 'Online order'
             },
             articleName: {
                 title: 'Article'
+            },
+            articlePrice: {
+                title: 'Article price'
+            },
+            orderedAmount: {
+                title: 'Ordered amount'
+            },
+            itemPrice: {
+                title: 'Total price'
             }
         }
     };
@@ -84,6 +87,7 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                     }
                     if (item.article) {
                         item.articleName = item.article.name;
+                        item.articlePrice = item.article.price;
                     }
                     this.data.add(item);
                 }

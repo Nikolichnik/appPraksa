@@ -49,6 +49,12 @@ export class OnlineOrderComponent implements OnInit, OnDestroy {
                 title: 'ID',
                 width: '70px'
             },
+            clientName: {
+                title: 'Client'
+            },
+            cityName: {
+                title: 'City'
+            },
             address: {
                 title: 'Address'
             },
@@ -57,12 +63,6 @@ export class OnlineOrderComponent implements OnInit, OnDestroy {
             },
             totalPrice: {
                 title: 'Total price'
-            },
-            cityName: {
-                title: 'City'
-            },
-            clientName: {
-                title: 'Client'
             }
         }
     };
@@ -82,7 +82,7 @@ export class OnlineOrderComponent implements OnInit, OnDestroy {
                 this.data = new LocalDataSource();
                 for (const onlineOrder of res.body) {
                     if (onlineOrder.city) {
-                        onlineOrder.cityName = onlineOrder.city.name;
+                        onlineOrder.cityName = onlineOrder.city.zipcode + ' ' + onlineOrder.city.name;
                     }
                     if (onlineOrder.client) {
                         onlineOrder.clientName = onlineOrder.client.name;

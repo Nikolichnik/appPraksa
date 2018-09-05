@@ -9,6 +9,7 @@ export interface IOnlineOrderItem {
     article?: IArticle;
     onlineOrderId?: number;
     articleName?: String;
+    articlePrice?: number;
 }
 
 export class OnlineOrderItem implements IOnlineOrderItem {
