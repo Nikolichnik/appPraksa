@@ -16,12 +16,23 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "onlineOrderItem",
+            "relationshipName": "onlineOrder",
             "otherEntityName": "onlineOrder",
             "otherEntityField": "id",
             "relationshipValidateRules": [
                 "required"
-            ]
+            ],
+            "otherEntityRelationshipName": "onlineOrderItem"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "article",
+            "otherEntityName": "article",
+            "otherEntityField": "name",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityRelationshipName": "onlineOrderItem"
         }
     ],
     "changelogDate": "20180905092930",

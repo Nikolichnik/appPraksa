@@ -31,12 +31,38 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.onlineOrder.totalPrice" for="field_totalPrice">Total Price</label>
                     <input type="number" class="form-control" name="totalPrice" id="field_totalPrice"
                         [(ngModel)]="onlineOrder.totalPrice" />
-                </div>
+                </div> -->
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="brezaApp.onlineOrder.city" for="field_city">City</label>
+                    <select class="form-control" id="field_city" name="city" [(ngModel)]="onlineOrder.city"  required>
+                        <option *ngIf="!editForm.value.city" [ngValue]="null" selected></option>
+                        <option [ngValue]="cityOption.id === onlineOrder.city?.id ? onlineOrder.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}} -- {{cityOption.zipcode}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.city?.dirty && editForm.controls.city?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.city?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="brezaApp.onlineOrder.client" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" [(ngModel)]="onlineOrder.client"  required>
+                        <option *ngIf="!editForm.value.client" [ngValue]="null" selected></option>
+                        <option [ngValue]="clientOption.id === onlineOrder.client?.id ? onlineOrder.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.name}} -- {{clientOption.city.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.client?.dirty && editForm.controls.client?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.client?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

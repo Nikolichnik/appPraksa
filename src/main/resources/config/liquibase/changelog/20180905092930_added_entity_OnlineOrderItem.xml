@@ -30,8 +30,12 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="online_order_item_id" type="bigint">
-                <constraints nullable="true" />
+            <column name="online_order_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="article_id" type="bigint">
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

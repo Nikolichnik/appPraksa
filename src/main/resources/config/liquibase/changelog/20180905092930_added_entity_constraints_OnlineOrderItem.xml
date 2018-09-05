@@ -8,11 +8,17 @@
     -->
     <changeSet id="20180905092930-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="online_order_item_id"
+        <addForeignKeyConstraint baseColumnNames="online_order_id"
                                  baseTableName="online_order_item"
-                                 constraintName="fk_online_order_item_online_order_item_id"
+                                 constraintName="fk_online_order_item_online_order_id"
                                  referencedColumnNames="id"
                                  referencedTableName="online_order"/>
+
+        <addForeignKeyConstraint baseColumnNames="article_id"
+                                 baseTableName="online_order_item"
+                                 constraintName="fk_online_order_item_article_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="article"/>
 
     </changeSet>
 </databaseChangeLog>

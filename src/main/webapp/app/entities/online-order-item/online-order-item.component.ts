@@ -15,6 +15,7 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
     onlineOrderItems: IOnlineOrderItem[];
     currentAccount: any;
     eventSubscriber: Subscription;
+    total: Number;
 
     constructor(
         private onlineOrderItemService: OnlineOrderItemService,
@@ -55,4 +56,6 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
     private onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
     }
+
+    calculateTotal() {}
 }

@@ -17,6 +17,18 @@
                 <dd>
                     <span>{{onlineOrder.totalPrice}}</span>
                 </dd>
+                <dt><span jhiTranslate="brezaApp.onlineOrder.city">City</span></dt>
+                <dd>
+                    <div *ngIf="onlineOrder.city">
+                        <a [routerLink]="['/city', onlineOrder.city?.id, 'view']">{{onlineOrder.city?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="brezaApp.onlineOrder.client">Client</span></dt>
+                <dd>
+                    <div *ngIf="onlineOrder.client">
+                        <a [routerLink]="['/client', onlineOrder.client?.id, 'view']">{{onlineOrder.client?.name}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -8,6 +8,8 @@ import { IOnlineOrderItem } from 'app/shared/model/online-order-item.model';
 import { OnlineOrderItemService } from './online-order-item.service';
 import { IOnlineOrder } from 'app/shared/model/online-order.model';
 import { OnlineOrderService } from 'app/entities/online-order';
+import { IArticle } from 'app/shared/model/article.model';
+import { ArticleService } from 'app/entities/article';
 
 @Component({
     selector: 'jhi-online-order-item-update',
@@ -19,10 +21,13 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
 
     onlineorders: IOnlineOrder[];
 
+    articles: IArticle[];
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private onlineOrderItemService: OnlineOrderItemService,
         private onlineOrderService: OnlineOrderService,
+        private articleService: ArticleService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -34,6 +39,12 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
         this.onlineOrderService.query().subscribe(
             (res: HttpResponse<IOnlineOrder[]>) => {
                 this.onlineorders = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.articleService.query().subscribe(
+            (res: HttpResponse<IArticle[]>) => {
+                this.articles = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -70,6 +81,10 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
     }
 
     trackOnlineOrderById(index: number, item: IOnlineOrder) {
+        return item.id;
+    }
+
+    trackArticleById(index: number, item: IArticle) {
         return item.id;
     }
     get onlineOrderItem() {

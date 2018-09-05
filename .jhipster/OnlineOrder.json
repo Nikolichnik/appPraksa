@@ -20,7 +20,28 @@
             "fieldType": "Integer"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "city",
+            "otherEntityName": "city",
+            "otherEntityField": "name",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityRelationshipName": "onlineOrder"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "client",
+            "otherEntityName": "client",
+            "otherEntityField": "name",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityRelationshipName": "onlineOrder"
+        }
+    ],
     "changelogDate": "20180905092929",
     "entityTableName": "online_order",
     "dto": "no",

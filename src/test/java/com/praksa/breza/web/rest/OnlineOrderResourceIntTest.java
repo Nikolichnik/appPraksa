@@ -3,6 +3,8 @@ package com.praksa.breza.web.rest;
 import com.praksa.breza.BrezaApp;
 
 import com.praksa.breza.domain.OnlineOrder;
+import com.praksa.breza.domain.City;
+import com.praksa.breza.domain.Client;
 import com.praksa.breza.repository.OnlineOrderRepository;
 import com.praksa.breza.web.rest.errors.ExceptionTranslator;
 
@@ -90,6 +92,16 @@ public class OnlineOrderResourceIntTest {
             .address(DEFAULT_ADDRESS)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
             .totalPrice(DEFAULT_TOTAL_PRICE);
+        // Add required entity
+        City city = CityResourceIntTest.createEntity(em);
+        em.persist(city);
+        em.flush();
+        onlineOrder.setCity(city);
+        // Add required entity
+        Client client = ClientResourceIntTest.createEntity(em);
+        em.persist(client);
+        em.flush();
+        onlineOrder.setClient(client);
         return onlineOrder;
     }
 

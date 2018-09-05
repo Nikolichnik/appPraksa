@@ -17,7 +17,8 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="brezaApp.onlineOrderItem.orderedAmount">Ordered Amount</span></th>
             <th><span jhiTranslate="brezaApp.onlineOrderItem.itemPrice">Item Price</span></th>
-            <th><span jhiTranslate="brezaApp.onlineOrderItem.onlineOrderItem">Online Order Item</span></th>
+            <th><span jhiTranslate="brezaApp.onlineOrderItem.onlineOrder">Online Order</span></th>
+            <th><span jhiTranslate="brezaApp.onlineOrderItem.article">Article</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,8 +28,13 @@
                 <td>{{onlineOrderItem.orderedAmount}}</td>
                 <td>{{onlineOrderItem.itemPrice}}</td>
                 <td>
-                    <div *ngIf="onlineOrderItem.onlineOrderItem">
-                        <a [routerLink]="['../online-order', onlineOrderItem.onlineOrderItem?.id, 'view' ]" >{{onlineOrderItem.onlineOrderItem?.id}}</a>
+                    <div *ngIf="onlineOrderItem.onlineOrder">
+                        <a [routerLink]="['../online-order', onlineOrderItem.onlineOrder?.id, 'view' ]" >{{onlineOrderItem.onlineOrder?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="onlineOrderItem.article">
+                        <a [routerLink]="['../article', onlineOrderItem.article?.id, 'view' ]" >{{onlineOrderItem.article?.name}}</a>
                     </div>
                 </td>
                 <td class="text-right">

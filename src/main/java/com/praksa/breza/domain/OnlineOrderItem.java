@@ -28,9 +28,15 @@ public class OnlineOrderItem implements Serializable {
     @Column(name = "item_price")
     private Integer itemPrice;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JsonIgnoreProperties("")
-    private OnlineOrder onlineOrderItem;
+    private OnlineOrder onlineOrder;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("")
+    private Article article;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -67,17 +73,30 @@ public class OnlineOrderItem implements Serializable {
         this.itemPrice = itemPrice;
     }
 
-    public OnlineOrder getOnlineOrderItem() {
-        return onlineOrderItem;
+    public OnlineOrder getOnlineOrder() {
+        return onlineOrder;
     }
 
-    public OnlineOrderItem onlineOrderItem(OnlineOrder onlineOrder) {
-        this.onlineOrderItem = onlineOrder;
+    public OnlineOrderItem onlineOrder(OnlineOrder onlineOrder) {
+        this.onlineOrder = onlineOrder;
         return this;
     }
 
-    public void setOnlineOrderItem(OnlineOrder onlineOrder) {
-        this.onlineOrderItem = onlineOrder;
+    public void setOnlineOrder(OnlineOrder onlineOrder) {
+        this.onlineOrder = onlineOrder;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public OnlineOrderItem article(Article article) {
+        this.article = article;
+        return this;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

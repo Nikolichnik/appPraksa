@@ -3,6 +3,8 @@ package com.praksa.breza.web.rest;
 import com.praksa.breza.BrezaApp;
 
 import com.praksa.breza.domain.OnlineOrderItem;
+import com.praksa.breza.domain.OnlineOrder;
+import com.praksa.breza.domain.Article;
 import com.praksa.breza.repository.OnlineOrderItemRepository;
 import com.praksa.breza.web.rest.errors.ExceptionTranslator;
 
@@ -86,6 +88,16 @@ public class OnlineOrderItemResourceIntTest {
         OnlineOrderItem onlineOrderItem = new OnlineOrderItem()
             .orderedAmount(DEFAULT_ORDERED_AMOUNT)
             .itemPrice(DEFAULT_ITEM_PRICE);
+        // Add required entity
+        OnlineOrder onlineOrder = OnlineOrderResourceIntTest.createEntity(em);
+        em.persist(onlineOrder);
+        em.flush();
+        onlineOrderItem.setOnlineOrder(onlineOrder);
+        // Add required entity
+        Article article = ArticleResourceIntTest.createEntity(em);
+        em.persist(article);
+        em.flush();
+        onlineOrderItem.setArticle(article);
         return onlineOrderItem;
     }
 
