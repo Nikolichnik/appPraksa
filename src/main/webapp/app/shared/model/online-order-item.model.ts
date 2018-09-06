@@ -18,6 +18,8 @@ export class OnlineOrderItem implements IOnlineOrderItem {
         public orderedAmount?: number,
         public itemPrice?: number,
         public onlineOrder?: IOnlineOrder,
-        public article?: IArticle
+        public article?: IArticle,
+        public articleName?: String,
+        public articlePrice?: number
     ) {}
 }

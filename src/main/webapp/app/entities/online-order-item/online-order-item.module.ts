@@ -25,6 +25,7 @@ const ENTITY_STATES = [...onlineOrderItemRoute, ...onlineOrderItemPopupRoute];
         OnlineOrderItemDeleteDialogComponent,
         OnlineOrderItemDeletePopupComponent
     ],
+    exports: [OnlineOrderItemComponent],
     entryComponents: [
         OnlineOrderItemComponent,
         OnlineOrderItemUpdateComponent,
