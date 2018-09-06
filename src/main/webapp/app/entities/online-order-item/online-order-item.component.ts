@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
@@ -6,19 +6,25 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IOnlineOrderItem } from 'app/shared/model/online-order-item.model';
 import { Principal } from 'app/core';
 import { OnlineOrderItemService } from './online-order-item.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
+import { IOnlineOrder } from 'app/shared/model/online-order.model';
+import { Column } from 'ng2-smart-table/lib/data-set/column';
 
 @Component({
     selector: 'jhi-online-order-item',
     templateUrl: './online-order-item.component.html'
 })
 export class OnlineOrderItemComponent implements OnInit, OnDestroy {
+    @Input() column: Column;
+    @Input() data: LocalDataSource;
+    @Input() inputClass: String;
+
     onlineOrderItems: IOnlineOrderItem[];
     currentAccount: any;
     eventSubscriber: Subscription;
 
-    data: LocalDataSource;
+    onlineOrderId: number;
 
     settings = {
         actions: {
@@ -72,12 +78,16 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
         private principal: Principal,
+        private activatedRoute: ActivatedRoute,
         private router: Router
     ) {}
 
     loadAll() {
         this.onlineOrderItemService.query().subscribe(
             (res: HttpResponse<IOnlineOrderItem[]>) => {
+                this.activatedRoute.params.subscribe(param => {
+                    this.onlineOrderId = param['id'];
+                });
                 this.onlineOrderItems = res.body;
                 this.data = new LocalDataSource();
                 for (const item of res.body) {
@@ -89,7 +99,9 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                         item.articleName = item.article.name;
                         item.articlePrice = item.article.price;
                     }
-                    this.data.add(item);
+                    if (this.onlineOrderId * 1 === item.onlineOrderId) {
+                        this.data.add(item);
+                    }
                 }
             },
             (res: HttpErrorResponse) => this.onError(res.message)

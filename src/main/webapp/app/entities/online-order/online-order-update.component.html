@@ -89,16 +89,17 @@
         </thead>
         <tbody>
             <tr *ngFor="let onlineOrderItem of onlineOrderItems ;trackBy: trackId">
-                <td><a [routerLink]="['/online-order-item', onlineOrderItem.id, 'view' ]">{{onlineOrderItem.id}}</a></td>
-                <td>{{onlineOrderItem.articleName}}</td>
-                <td>{{onlineOrderItem.orderedAmount}}</td>
-                <td>{{onlineOrderItem.articlePrice}}</td>
-                <td>{{onlineOrderItem.itemPrice}}</td>
+                <td *ngIf="onlineOrderItem.onlineOrder.id === onlineOrder.id"><a [routerLink]="['/online-order-item', onlineOrderItem.id, 'view' ]">{{onlineOrderItem.id}}</a></td>
+                <td *ngIf="onlineOrderItem.onlineOrder.id === onlineOrder.id">{{onlineOrderItem.articleName}}</td>
+                <td *ngIf="onlineOrderItem.onlineOrder.id === onlineOrder.id">{{onlineOrderItem.orderedAmount}}</td>
+                <td *ngIf="onlineOrderItem.onlineOrder.id === onlineOrder.id">{{onlineOrderItem.articlePrice}}</td>
+                <td *ngIf="onlineOrderItem.onlineOrder.id === onlineOrder.id">{{onlineOrderItem.itemPrice}}</td>
             </tr>
         </tbody>
     </table>
 </div> -->
 
-<jhi-online-order-item [hidden]="!onlineOrder.id"></jhi-online-order-item>
+<jhi-online-order-item *ngIf="onlineOrder.id"></jhi-online-order-item>
 
 <!-- jhiTranslate="brezaApp.onlineOrderItem.itemPrice" -->
+<!-- (mouseover)="setFilter(onlineOrder.id)" -->
