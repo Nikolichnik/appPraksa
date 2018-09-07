@@ -36,7 +36,7 @@ export class OnlineOrderItemService {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
 
-    getByOrderId(OnlineOrderItemId: number) {
-        return this.http.get<IOnlineOrderItem[]>(`${this.resourceUrl}/details/${OnlineOrderItemId}`, { observe: 'response' });
+    getByOrderId(OnlineOrderId: number) {
+        return this.http.get<IOnlineOrderItem[]>(`${this.resourceUrl}/online-orders/${OnlineOrderId}`, { observe: 'response' });
     }
 }
