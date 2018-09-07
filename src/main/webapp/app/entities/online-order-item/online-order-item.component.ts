@@ -83,11 +83,12 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
     ) {}
 
     loadAll() {
-        this.onlineOrderItemService.query().subscribe(
+        this.activatedRoute.params.subscribe(param => {
+            this.onlineOrderId = +param['id'];
+        });
+
+        this.onlineOrderItemService.getByOrderId(this.onlineOrderId).subscribe(
             (res: HttpResponse<IOnlineOrderItem[]>) => {
-                this.activatedRoute.params.subscribe(param => {
-                    this.onlineOrderId = param['id'];
-                });
                 this.onlineOrderItems = res.body;
                 this.data = new LocalDataSource();
                 for (const item of res.body) {
@@ -99,13 +100,37 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                         item.articleName = item.article.name;
                         item.articlePrice = item.article.price;
                     }
-                    if (this.onlineOrderId * 1 === item.onlineOrderId) {
+                    if (this.onlineOrderId === item.onlineOrderId) {
                         this.data.add(item);
                     }
                 }
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+
+        // this.onlineOrderItemService.query().subscribe(
+        //     (res: HttpResponse<IOnlineOrderItem[]>) => {
+        //         this.activatedRoute.params.subscribe(param => {
+        //             this.onlineOrderId = +param['id'];
+        //         });
+        //         this.onlineOrderItems = res.body;
+        //         this.data = new LocalDataSource();
+        //         for (const item of res.body) {
+        //             // item.itemPrice = item.orderedAmount * item.article.price;
+        //             // if (item.onlineOrder) {
+        //             //     item.onlineOrderId = item.onlineOrder.id;
+        //             // }
+        //             // if (item.article) {
+        //             //     item.articleName = item.article.name;
+        //             //     item.articlePrice = item.article.price;
+        //             // }
+        //             // if (this.onlineOrderId === item.onlineOrderId) {
+        //             //     this.data.add(item);
+        //             // }
+        //         }
+        //     },
+        //     (res: HttpErrorResponse) => this.onError(res.message)
+        // );
     }
 
     ngOnInit() {

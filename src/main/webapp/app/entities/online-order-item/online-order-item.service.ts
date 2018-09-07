@@ -35,4 +35,8 @@ export class OnlineOrderItemService {
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
+
+    getByOrderId(OnlineOrderItemId: number) {
+        return this.http.get<IOnlineOrderItem[]>(`${this.resourceUrl}/details/${OnlineOrderItemId}`, { observe: 'response' });
+    }
 }

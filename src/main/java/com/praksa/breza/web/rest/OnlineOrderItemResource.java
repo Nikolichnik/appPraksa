@@ -36,51 +36,57 @@ public class OnlineOrderItemResource {
     }
 
     /**
-     * POST  /online-order-items : Create a new onlineOrderItem.
+     * POST /online-order-items : Create a new onlineOrderItem.
      *
      * @param onlineOrderItem the onlineOrderItem to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new onlineOrderItem, or with status 400 (Bad Request) if the onlineOrderItem has already an ID
+     * @return the ResponseEntity with status 201 (Created) and with body the new
+     *         onlineOrderItem, or with status 400 (Bad Request) if the
+     *         onlineOrderItem has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/online-order-items")
     @Timed
-    public ResponseEntity<OnlineOrderItem> createOnlineOrderItem(@Valid @RequestBody OnlineOrderItem onlineOrderItem) throws URISyntaxException {
+    public ResponseEntity<OnlineOrderItem> createOnlineOrderItem(@Valid @RequestBody OnlineOrderItem onlineOrderItem)
+            throws URISyntaxException {
         log.debug("REST request to save OnlineOrderItem : {}", onlineOrderItem);
         if (onlineOrderItem.getId() != null) {
-            throw new BadRequestAlertException("A new onlineOrderItem cannot already have an ID", ENTITY_NAME, "idexists");
+            throw new BadRequestAlertException("A new onlineOrderItem cannot already have an ID", ENTITY_NAME,
+                    "idexists");
         }
         OnlineOrderItem result = onlineOrderItemRepository.save(onlineOrderItem);
         return ResponseEntity.created(new URI("/api/online-order-items/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString())).body(result);
     }
 
     /**
-     * PUT  /online-order-items : Updates an existing onlineOrderItem.
+     * PUT /online-order-items : Updates an existing onlineOrderItem.
      *
      * @param onlineOrderItem the onlineOrderItem to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated onlineOrderItem,
-     * or with status 400 (Bad Request) if the onlineOrderItem is not valid,
-     * or with status 500 (Internal Server Error) if the onlineOrderItem couldn't be updated
+     * @return the ResponseEntity with status 200 (OK) and with body the updated
+     *         onlineOrderItem, or with status 400 (Bad Request) if the
+     *         onlineOrderItem is not valid, or with status 500 (Internal Server
+     *         Error) if the onlineOrderItem couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/online-order-items")
     @Timed
-    public ResponseEntity<OnlineOrderItem> updateOnlineOrderItem(@Valid @RequestBody OnlineOrderItem onlineOrderItem) throws URISyntaxException {
+    public ResponseEntity<OnlineOrderItem> updateOnlineOrderItem(@Valid @RequestBody OnlineOrderItem onlineOrderItem)
+            throws URISyntaxException {
         log.debug("REST request to update OnlineOrderItem : {}", onlineOrderItem);
         if (onlineOrderItem.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         OnlineOrderItem result = onlineOrderItemRepository.save(onlineOrderItem);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, onlineOrderItem.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, onlineOrderItem.getId().toString()))
+                .body(result);
     }
 
     /**
-     * GET  /online-order-items : get all the onlineOrderItems.
+     * GET /online-order-items : get all the onlineOrderItems.
      *
-     * @return the ResponseEntity with status 200 (OK) and the list of onlineOrderItems in body
+     * @return the ResponseEntity with status 200 (OK) and the list of
+     *         onlineOrderItems in body
      */
     @GetMapping("/online-order-items")
     @Timed
@@ -90,10 +96,11 @@ public class OnlineOrderItemResource {
     }
 
     /**
-     * GET  /online-order-items/:id : get the "id" onlineOrderItem.
+     * GET /online-order-items/:id : get the "id" onlineOrderItem.
      *
      * @param id the id of the onlineOrderItem to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the onlineOrderItem, or with status 404 (Not Found)
+     * @return the ResponseEntity with status 200 (OK) and with body the
+     *         onlineOrderItem, or with status 404 (Not Found)
      */
     @GetMapping("/online-order-items/{id}")
     @Timed
@@ -104,7 +111,7 @@ public class OnlineOrderItemResource {
     }
 
     /**
-     * DELETE  /online-order-items/:id : delete the "id" onlineOrderItem.
+     * DELETE /online-order-items/:id : delete the "id" onlineOrderItem.
      *
      * @param id the id of the onlineOrderItem to delete
      * @return the ResponseEntity with status 200 (OK)
@@ -116,5 +123,19 @@ public class OnlineOrderItemResource {
 
         onlineOrderItemRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    /**
+     * GETBYORDERID /online-order-items/:id : get the "id" onlineOrderItem for
+     * certain OnlineOrderId.
+     *
+     * @return the ResponseEntity with status 200 (OK) and with body the
+     *         onlineOrderItem, or with status 404 (Not Found)
+     */
+    @GetMapping("/online-order-items/details/{OnlineOrderItemId}")
+    @Timed
+    public List<OnlineOrderItem> findByOnlineOrderId(@PathVariable Long OnlineOrderItemId) {
+        List<OnlineOrderItem> onlineOrderItems = onlineOrderItemRepository.findByOnlineOrderId(OnlineOrderItemId);
+        return onlineOrderItems;
     }
 }
