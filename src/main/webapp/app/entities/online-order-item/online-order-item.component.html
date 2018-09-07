@@ -67,5 +67,12 @@
     </div> -->
 
     <ng2-smart-table [settings]="settings" [source]="data" (create)="add()" (custom)="onCustom($event)"></ng2-smart-table>
+
+    <hr>
+
+    <div class="row justify-content-end">
+        <label>TOTAL: {{totalPrice}}</label>
+        <label style="width: 30px"></label>
+    </div>
     
 </div>

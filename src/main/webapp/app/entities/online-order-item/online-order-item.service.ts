@@ -36,7 +36,7 @@ export class OnlineOrderItemService {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
 
-    getByOrderId(OnlineOrderId: number) {
+    getByOrderId(OnlineOrderId: number): Observable<EntityArrayResponseType> {
         return this.http.get<IOnlineOrderItem[]>(`${this.resourceUrl}/online-orders/${OnlineOrderId}`, { observe: 'response' });
     }
 }

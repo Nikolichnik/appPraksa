@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
@@ -25,6 +25,8 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
     eventSubscriber: Subscription;
 
     onlineOrderId: number;
+
+    @Output() totalPrice: number;
 
     settings = {
         actions: {
@@ -55,9 +57,9 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                 title: 'ID',
                 width: '70px'
             },
-            onlineOrderId: {
-                title: 'Online order'
-            },
+            // onlineOrderId: {
+            //     title: 'Online order'
+            // },
             articleName: {
                 title: 'Article'
             },
@@ -91,8 +93,10 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
             (res: HttpResponse<IOnlineOrderItem[]>) => {
                 this.onlineOrderItems = res.body;
                 this.data = new LocalDataSource();
+                this.totalPrice = 0;
                 for (const item of res.body) {
                     item.itemPrice = item.orderedAmount * item.article.price;
+                    this.totalPrice += item.itemPrice;
                     if (item.onlineOrder) {
                         item.onlineOrderId = item.onlineOrder.id;
                     }
@@ -100,9 +104,7 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                         item.articleName = item.article.name;
                         item.articlePrice = item.article.price;
                     }
-                    if (this.onlineOrderId === item.onlineOrderId) {
-                        this.data.add(item);
-                    }
+                    this.data.add(item);
                 }
             },
             (res: HttpErrorResponse) => this.onError(res.message)
