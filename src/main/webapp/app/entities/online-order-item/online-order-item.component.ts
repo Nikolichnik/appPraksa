@@ -97,6 +97,7 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                 for (const item of res.body) {
                     item.itemPrice = item.orderedAmount * item.article.price;
                     this.totalPrice += item.itemPrice;
+                    item.onlineOrder.totalPrice += item.itemPrice;
                     if (item.onlineOrder) {
                         item.onlineOrderId = item.onlineOrder.id;
                     }
