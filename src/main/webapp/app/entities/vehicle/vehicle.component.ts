@@ -39,7 +39,7 @@ export class VehicleComponent implements OnInit, OnDestroy {
         // mode: 'external',
         add: {
             create: true,
-            addButtonContent: 'Create new Online Order Item'
+            addButtonContent: 'Create new Vehicle'
         },
         columns: {
             id: {
