@@ -27,18 +27,12 @@ export class VehicleComponent implements OnInit, OnDestroy {
             class: 'smart-table'
         },
         actions: {
-            // edit: false,
             delete: false,
             custom: [
                 {
                     name: 'view',
                     title: '<img src="../../../content/images/view.png">'
                 },
-                // title: this._sanitizer.bypassSecurityTrustHtml('<i class="fa fa-eye"></i>')
-                // {
-                //     name: 'edit',
-                //     title: 'Edit '
-                // },
                 {
                     name: 'delete',
                     title: '<img src="../../../content/images/delete.png">'
@@ -182,7 +176,6 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
     private onSaveSuccess() {
         this.isSaving = false;
-        // this.previousState();
     }
 
     previousState() {
