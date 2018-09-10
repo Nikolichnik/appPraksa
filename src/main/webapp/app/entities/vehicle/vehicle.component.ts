@@ -136,10 +136,8 @@ export class VehicleComponent implements OnInit, OnDestroy {
     onEditConfirm(event) {
         if (window.confirm('Are you sure you want to edit this Vehicle?')) {
             if (this.validate(event.newData)) {
-                // console.log('Create CONFIRMED');
                 event.confirm.resolve(event.newData);
             } else {
-                // console.log('Create REJECTED');
                 window.alert('Invalid input data! Vehicle was NOT edited.');
             }
         } else {
@@ -150,10 +148,8 @@ export class VehicleComponent implements OnInit, OnDestroy {
     onCreateConfirm(event) {
         if (window.confirm('Are you sure you want to create this Vehicle?')) {
             if (this.validate(event.newData)) {
-                // console.log('Create CONFIRMED');
                 event.confirm.resolve(event.newData);
             } else {
-                // console.log('Create REJECTED');
                 window.alert('Invalid input data! Vehicle was NOT created.');
             }
         } else {
@@ -161,8 +157,7 @@ export class VehicleComponent implements OnInit, OnDestroy {
         }
     }
 
-    validate(vehicle: IVehicle) {
-        // console.log('Enter VALIDATE');
+    validate(vehicle: IVehicle): boolean {
         const regexVehicleNumber = /^[1-9][0-9][0-9]/g;
         const regexFirstLetter = /^[A-Z][A-Za-z]{2,19}$/;
 
@@ -171,10 +166,8 @@ export class VehicleComponent implements OnInit, OnDestroy {
             regexFirstLetter.test(vehicle.brand) &&
             regexFirstLetter.test(vehicle.model)
         ) {
-            // console.log('VALIDATE return TRUE');
             return true;
         } else {
-            // console.log('VALIDATE return FALSE');
             return false;
         }
     }
