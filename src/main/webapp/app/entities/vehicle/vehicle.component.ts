@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { IVehicle } from 'app/shared/model/vehicle.model';
@@ -17,6 +17,10 @@ export class VehicleComponent implements OnInit, OnDestroy {
     vehicles: IVehicle[];
     currentAccount: any;
     eventSubscriber: Subscription;
+
+    isSaving: boolean;
+
+    vehicle: IVehicle;
 
     settings = {
         attr: {
@@ -115,19 +119,10 @@ export class VehicleComponent implements OnInit, OnDestroy {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
-    // add() {
-    //     this.router.navigateByUrl('/vehicle/new');
-    // }
-
     onCustom(event) {
-        // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
-
         if (event.action === 'view') {
             this.router.navigateByUrl('vehicle/' + event.data.id + '/view');
         }
-        // else if (event.action === 'edit') {
-        //     this.router.navigateByUrl('vehicle/' + event.data.id + '/edit');
-        // } else
         if (event.action === 'delete') {
             this.router.navigate(['/', { outlets: { popup: 'vehicle/' + event.data.id + '/delete' } }]);
         }
@@ -135,7 +130,9 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
     onEditConfirm(event) {
         if (window.confirm('Are you sure you want to edit this Vehicle?')) {
-            if (this.validate(event.newData)) {
+            this.vehicle = event.newData;
+            if (this.validate(this.vehicle)) {
+                this.save();
                 event.confirm.resolve(event.newData);
             } else {
                 window.alert('Invalid input data! Vehicle was NOT edited.');
@@ -147,7 +144,9 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
     onCreateConfirm(event) {
         if (window.confirm('Are you sure you want to create this Vehicle?')) {
-            if (this.validate(event.newData)) {
+            this.vehicle = event.newData;
+            if (this.validate(this.vehicle)) {
+                this.save();
                 event.confirm.resolve(event.newData);
             } else {
                 window.alert('Invalid input data! Vehicle was NOT created.');
@@ -159,16 +158,38 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
     validate(vehicle: IVehicle): boolean {
         const regexVehicleNumber = /^[1-9][0-9][0-9]/g;
-        const regexFirstLetter = /^[A-Z][A-Za-z]{2,19}$/;
+        const regexFirstLetter = /^[A-Z][A-Z a-z]{2,19}$/;
 
-        if (
-            regexVehicleNumber.test(vehicle.vehicleNumber) &&
-            regexFirstLetter.test(vehicle.brand) &&
-            regexFirstLetter.test(vehicle.model)
-        ) {
+        if (regexVehicleNumber.test(vehicle.vehicleNumber) && regexFirstLetter.test(vehicle.brand)) {
             return true;
         } else {
             return false;
         }
+    }
+
+    save() {
+        this.isSaving = true;
+        if (this.vehicle.id) {
+            this.subscribeToSaveResponse(this.vehicleService.update(this.vehicle));
+        } else {
+            this.subscribeToSaveResponse(this.vehicleService.create(this.vehicle));
+        }
+    }
+
+    private subscribeToSaveResponse(result: Observable<HttpResponse<IVehicle>>) {
+        result.subscribe((res: HttpResponse<IVehicle>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    }
+
+    private onSaveSuccess() {
+        this.isSaving = false;
+        // this.previousState();
+    }
+
+    previousState() {
+        window.history.back();
+    }
+
+    private onSaveError() {
+        this.isSaving = false;
     }
 }
