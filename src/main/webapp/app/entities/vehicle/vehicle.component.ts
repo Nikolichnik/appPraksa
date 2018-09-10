@@ -134,30 +134,35 @@ export class VehicleComponent implements OnInit, OnDestroy {
     }
 
     onEditConfirm(event) {
-        console.log('SaveConfirm!!!!!!!!');
         if (window.confirm('Are you sure you want to edit this Vehicle?')) {
-            event.confirm.resolve(event.newData);
+            if (this.validate(event.newData)) {
+                // console.log('Create CONFIRMED');
+                event.confirm.resolve(event.newData);
+            } else {
+                // console.log('Create REJECTED');
+                window.alert('Invalid input data! Vehicle was NOT edited.');
+            }
         } else {
             event.confirm.reject();
         }
     }
 
     onCreateConfirm(event) {
-        console.log('CreateConfirm!!!!!!!!' + event.newData['vehicleNumber']);
         if (window.confirm('Are you sure you want to create this Vehicle?')) {
             if (this.validate(event.newData)) {
-                console.log('Create CONFIRMED');
+                // console.log('Create CONFIRMED');
                 event.confirm.resolve(event.newData);
+            } else {
+                // console.log('Create REJECTED');
+                window.alert('Invalid input data! Vehicle was NOT created.');
             }
         } else {
-            console.log('Create REJECTED');
             event.confirm.reject();
-            window.alert('Invalid input data! Vehicle was NOT created.');
         }
     }
 
     validate(vehicle: IVehicle) {
-        console.log('Enter VALIDATE');
+        // console.log('Enter VALIDATE');
         const regexVehicleNumber = /^[1-9][0-9][0-9]/g;
         const regexFirstLetter = /^[A-Z][A-Za-z]{2,19}$/;
 
@@ -166,10 +171,10 @@ export class VehicleComponent implements OnInit, OnDestroy {
             regexFirstLetter.test(vehicle.brand) &&
             regexFirstLetter.test(vehicle.model)
         ) {
-            console.log('VALIDATE return TRUE');
+            // console.log('VALIDATE return TRUE');
             return true;
         } else {
-            console.log('VALIDATE return FALSE');
+            // console.log('VALIDATE return FALSE');
             return false;
         }
     }
