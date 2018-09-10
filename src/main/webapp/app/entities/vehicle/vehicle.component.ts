@@ -6,6 +6,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { IVehicle } from 'app/shared/model/vehicle.model';
 import { Principal } from 'app/core';
 import { VehicleService } from './vehicle.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'jhi-vehicle',
@@ -16,11 +17,53 @@ export class VehicleComponent implements OnInit, OnDestroy {
     currentAccount: any;
     eventSubscriber: Subscription;
 
+    settings = {
+        actions: {
+            // edit: false,
+            delete: false,
+            custom: [
+                {
+                    name: 'view',
+                    title: 'View '
+                },
+                // {
+                //     name: 'edit',
+                //     title: 'Edit '
+                // },
+                {
+                    name: 'delete',
+                    title: 'Delete'
+                }
+            ]
+        },
+        // mode: 'external',
+        add: {
+            create: true,
+            addButtonContent: 'Create new Online Order Item'
+        },
+        columns: {
+            id: {
+                title: 'ID',
+                width: '70px'
+            },
+            vehicleNumber: {
+                title: 'Vehicle number'
+            },
+            brand: {
+                title: 'Brand'
+            },
+            model: {
+                title: 'Model'
+            }
+        }
+    };
+
     constructor(
         private vehicleService: VehicleService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
-        private principal: Principal
+        private principal: Principal,
+        private router: Router
     ) {}
 
     loadAll() {
@@ -54,5 +97,23 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
     private onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    // add() {
+    //     this.router.navigateByUrl('/vehicle/new');
+    // }
+
+    onCustom(event) {
+        // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+
+        if (event.action === 'view') {
+            this.router.navigateByUrl('vehicle/' + event.data.id + '/view');
+        }
+        // else if (event.action === 'edit') {
+        //     this.router.navigateByUrl('vehicle/' + event.data.id + '/edit');
+        // } else
+        if (event.action === 'delete') {
+            this.router.navigate(['/', { outlets: { popup: 'vehicle/' + event.data.id + '/delete' } }]);
+        }
     }
 }
