@@ -56,6 +56,6 @@
         </table>
     </div> -->
 
-    <ng2-smart-table [settings]="settings" [source]="vehicles" (custom)="onCustom($event)"></ng2-smart-table>
+    <ng2-smart-table [settings]="settings" [source]="vehicles" (custom)="onCustom($event)" (editConfirm)="onEditConfirm($event)" (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
 
 </div>

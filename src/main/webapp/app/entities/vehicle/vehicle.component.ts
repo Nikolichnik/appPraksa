@@ -42,7 +42,7 @@ export class VehicleComponent implements OnInit, OnDestroy {
             ],
             columnTitle: ''
         },
-        // mode: 'external',
+        // mode: 'inline',
         add: {
             create: true,
             confirmCreate: true,
@@ -130,6 +130,47 @@ export class VehicleComponent implements OnInit, OnDestroy {
         // } else
         if (event.action === 'delete') {
             this.router.navigate(['/', { outlets: { popup: 'vehicle/' + event.data.id + '/delete' } }]);
+        }
+    }
+
+    onEditConfirm(event) {
+        console.log('SaveConfirm!!!!!!!!');
+        if (window.confirm('Are you sure you want to edit this Vehicle?')) {
+            event.confirm.resolve(event.newData);
+        } else {
+            event.confirm.reject();
+        }
+    }
+
+    onCreateConfirm(event) {
+        console.log('CreateConfirm!!!!!!!!' + event.newData['vehicleNumber']);
+        if (window.confirm('Are you sure you want to create this Vehicle?')) {
+            if (this.validate(event.newData)) {
+                console.log('Create CONFIRMED');
+                event.confirm.resolve(event.newData);
+            }
+        } else {
+            console.log('Create REJECTED');
+            event.confirm.reject();
+            window.alert('Invalid input data! Vehicle was NOT created.');
+        }
+    }
+
+    validate(vehicle: IVehicle) {
+        console.log('Enter VALIDATE');
+        const regexVehicleNumber = /^[1-9][0-9][0-9]/g;
+        const regexFirstLetter = /^[A-Z][A-Za-z]{2,19}$/;
+
+        if (
+            regexVehicleNumber.test(vehicle.vehicleNumber) &&
+            regexFirstLetter.test(vehicle.brand) &&
+            regexFirstLetter.test(vehicle.model)
+        ) {
+            console.log('VALIDATE return TRUE');
+            return true;
+        } else {
+            console.log('VALIDATE return FALSE');
+            return false;
         }
     }
 }
