@@ -18,6 +18,9 @@ export class VehicleComponent implements OnInit, OnDestroy {
     eventSubscriber: Subscription;
 
     settings = {
+        attr: {
+            class: 'smart-table'
+        },
         actions: {
             // edit: false,
             delete: false,
@@ -34,7 +37,8 @@ export class VehicleComponent implements OnInit, OnDestroy {
                     name: 'delete',
                     title: 'Delete'
                 }
-            ]
+            ],
+            columnTitle: ''
         },
         // mode: 'external',
         add: {
@@ -44,7 +48,9 @@ export class VehicleComponent implements OnInit, OnDestroy {
         columns: {
             id: {
                 title: 'ID',
-                width: '70px'
+                width: '70px',
+                editable: false,
+                addable: false
             },
             vehicleNumber: {
                 title: 'Vehicle number'
