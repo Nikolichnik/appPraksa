@@ -7,6 +7,7 @@ import { IVehicle } from 'app/shared/model/vehicle.model';
 import { Principal } from 'app/core';
 import { VehicleService } from './vehicle.service';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'jhi-vehicle',
@@ -27,15 +28,16 @@ export class VehicleComponent implements OnInit, OnDestroy {
             custom: [
                 {
                     name: 'view',
-                    title: 'View '
+                    title: '<img src="../../../content/images/view.png">'
                 },
+                // title: this._sanitizer.bypassSecurityTrustHtml('<i class="fa fa-eye"></i>')
                 // {
                 //     name: 'edit',
                 //     title: 'Edit '
                 // },
                 {
                     name: 'delete',
-                    title: 'Delete'
+                    title: '<img src="../../../content/images/delete.png">'
                 }
             ],
             columnTitle: ''
@@ -43,7 +45,14 @@ export class VehicleComponent implements OnInit, OnDestroy {
         // mode: 'external',
         add: {
             create: true,
-            addButtonContent: 'Create new Vehicle'
+            confirmCreate: true,
+            addButtonContent: 'Add new Vehicle',
+            createButtonContent: 'Create',
+            cancelButtonContent: 'Cancel'
+        },
+        edit: {
+            editButtonContent: '<img src="../../../content/images/edit.png">',
+            confirmSave: true
         },
         columns: {
             id: {
@@ -69,7 +78,8 @@ export class VehicleComponent implements OnInit, OnDestroy {
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
         private principal: Principal,
-        private router: Router
+        private router: Router,
+        private _sanitizer: DomSanitizer
     ) {}
 
     loadAll() {
