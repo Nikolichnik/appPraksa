@@ -12,7 +12,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.onlineOrderItem.orderedAmount" for="field_orderedAmount">Ordered
                         Amount</label>
-                    <input type="number" class="form-control" name="orderedAmount" id="field_orderedAmount" [(ngModel)]="onlineOrderItem.orderedAmount"
+                    <input type="number" class="form-control" name="orderedAmount" id="field_orderedAmount" [(ngModel)]="onlineOrderItem.orderedAmount" (ngModelChange)="onNgChange()"
                         required/>
                     <div [hidden]="!(editForm.controls.orderedAmount?.dirty && editForm.controls.orderedAmount?.invalid)">
                         <small class="form-text text-danger" [hidden]="!editForm.controls.orderedAmount?.errors?.required" jhiTranslate="entity.validation.required">
@@ -22,15 +22,10 @@
                             This field should be a number.
                         </small>
                     </div>
-                </div>
-                <!-- <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="brezaApp.onlineOrderItem.itemPrice" for="field_itemPrice">Item Price</label>
-                    <input type="number" class="form-control" name="itemPrice" id="field_itemPrice"
-                        [(ngModel)]="onlineOrderItem.itemPrice" />
-                </div> -->
+                </div>                
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.onlineOrderItem.article" for="field_article">Article</label>
-                    <select class="form-control" id="field_article" name="article" [(ngModel)]="onlineOrderItem.article" required>
+                    <select class="form-control" id="field_article" name="article" [(ngModel)]="onlineOrderItem.article" (ngModelChange)="onNgChange()" required>
                         <option *ngIf="!editForm.value.article" [ngValue]="null" selected></option>
                         <option [ngValue]="articleOption.id === onlineOrderItem.article?.id ? onlineOrderItem.article : articleOption" *ngFor="let articleOption of articles; trackBy: trackArticleById">{{articleOption.name}}</option>
                     </select>
@@ -55,10 +50,15 @@
                     </small>
                 </div>
             </div>
-            <div class="justify-content-end">
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="brezaApp.onlineOrderItem.itemPrice" for="field_itemPrice">Item Price</label>
+                <input readonly type="number" class="form-control" name="itemPrice" id="field_itemPrice"
+                    [(ngModel)]="onlineOrderItem.itemPrice" />
+            </div>
+            <!-- <div class="justify-content-end">
                 <label class="form-control-label">Item Price:</label>
                 <label class="animate fadeInRight" *ngIf="onlineOrderItem.article && onlineOrderItem.orderedAmount">{{onlineOrderItem.orderedAmount * onlineOrderItem.article.price}}</label>
-            </div>
+            </div> -->
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
