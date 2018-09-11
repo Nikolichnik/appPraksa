@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, Output } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Subscription, Observable } from 'rxjs';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
@@ -10,15 +10,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 import { Column } from 'ng2-smart-table/lib/data-set/column';
 
+import { OnlineOrderService } from '../online-order/online-order.service';
+
 @Component({
     selector: 'jhi-online-order-item',
     templateUrl: './online-order-item.component.html'
 })
 export class OnlineOrderItemComponent implements OnInit, OnDestroy {
-    @Input() column: Column;
-    @Input() data: LocalDataSource;
-    @Input() inputClass: String;
-
     onlineOrderItems: IOnlineOrderItem[];
     currentAccount: any;
     eventSubscriber: Subscription;
@@ -29,6 +27,10 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
     private onlineOrderItem = new OnlineOrderItem();
 
     totalPrice: number;
+
+    data;
+
+    @Output() childSubmit = new EventEmitter<any>();
 
     // totalPrice = new Observable(observer => setInterval(() => observer.next(this.totalPrice), 100));
 
@@ -53,7 +55,7 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
         },
         mode: 'external',
         add: {
-            create: true,
+            // create: true,
             addButtonContent: 'Create new Online Order Item'
         },
         columns: {
@@ -82,7 +84,8 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
         private eventManager: JhiEventManager,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private onlineOrderService: OnlineOrderService
     ) {}
 
     loadAll() {
@@ -96,9 +99,13 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                 this.data = new LocalDataSource();
                 this.totalPrice = 0;
                 for (const item of res.body) {
+                    item.onlineOrder.totalPrice = 0;
                     item.itemPrice = item.orderedAmount * item.article.price;
                     this.totalPrice += item.itemPrice;
                     item.onlineOrder.totalPrice += item.itemPrice;
+
+                    this.onlineOrderService.update(item.onlineOrder);
+
                     if (item.onlineOrder) {
                         item.onlineOrderId = item.onlineOrder.id;
                     }
@@ -162,11 +169,20 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
     }
 
     add() {
-        this.router.navigateByUrl('/online-order-item/new');
+        this.eventManager.broadcast({
+            name: 'onlineOrderItemModification',
+            content: 'Add an Item'
+        });
+        setTimeout(this.router.navigateByUrl('/online-order-item/new'), 100);
     }
 
     onCustom(event) {
         // alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`);
+
+        this.eventManager.broadcast({
+            name: 'onlineOrderItemModification',
+            content: 'Add an Item'
+        });
 
         if (event.action === 'view') {
             this.router.navigateByUrl('online-order-item/' + event.data.id + '/view');

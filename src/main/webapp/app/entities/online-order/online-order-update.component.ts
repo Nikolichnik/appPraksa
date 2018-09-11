@@ -3,8 +3,8 @@ import { IOnlineOrderItem } from './../../shared/model/online-order-item.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
+import { Observable, Subscription } from 'rxjs';
+import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 
 import { IOnlineOrder } from 'app/shared/model/online-order.model';
 import { OnlineOrderService } from './online-order.service';
@@ -30,6 +30,8 @@ export class OnlineOrderUpdateComponent implements OnInit {
 
     data;
 
+    eventSubscriber: Subscription;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private onlineOrderService: OnlineOrderService,
@@ -37,10 +39,13 @@ export class OnlineOrderUpdateComponent implements OnInit {
         private clientService: ClientService,
         private onlineOrderItemService: OnlineOrderItemService,
         private activatedRoute: ActivatedRoute,
+        private eventManager: JhiEventManager,
         private route: Router
     ) {}
 
     ngOnInit() {
+        this.eventSubscriber = this.eventManager.subscribe('onlineOrderItemModification', response => this.save());
+
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ onlineOrder }) => {
             this.onlineOrder = onlineOrder;
@@ -74,6 +79,16 @@ export class OnlineOrderUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+        // this.onlineOrderItemService.getByOrderId(this._onlineOrder.id).subscribe(
+        //     (res: HttpResponse<IOnlineOrderItem[]>) => {
+        //         this.onlineOrderItems = res.body;
+        //         this._onlineOrder.totalPrice = 0;
+        //         for (const onlineOrderItem of res.body) {
+        //             this._onlineOrder.totalPrice += onlineOrderItem.orderedAmount * onlineOrderItem.article.price;
+        //         }
+        //     },
+        //     (res: HttpErrorResponse) => this.onError(res.message)
+        // );
     }
 
     checkIfRouteContainsEdit() {
@@ -102,7 +117,6 @@ export class OnlineOrderUpdateComponent implements OnInit {
 
     private onSaveSuccess() {
         this.isSaving = false;
-        this.previousState();
     }
 
     private onSaveError() {
