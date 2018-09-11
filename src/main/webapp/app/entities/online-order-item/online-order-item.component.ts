@@ -28,7 +28,9 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
     message = this.onlineOrderItems;
     private onlineOrderItem = new OnlineOrderItem();
 
-    totalPrice = new Observable(observer => setInterval(() => observer.next(this.totalPrice), 100));
+    totalPrice: number;
+
+    // totalPrice = new Observable(observer => setInterval(() => observer.next(this.totalPrice), 100));
 
     settings = {
         actions: {

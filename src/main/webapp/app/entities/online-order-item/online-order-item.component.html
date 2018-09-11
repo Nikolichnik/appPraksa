@@ -3,8 +3,8 @@
         <span jhiTranslate="brezaApp.onlineOrderItem.home.title">Online Order Items</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-online-order-item" [routerLink]="['/online-order-item/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="brezaApp.onlineOrderItem.home.createLabel">
-            Create new Online Order Item
+            <span jhiTranslate="brezaApp.onlineOrderItem.home.createLabel">
+                Create new Online Order Item
             </span>
         </button>
     </h2>
@@ -71,8 +71,11 @@
     <hr>
 
     <div class="row justify-content-end">
-        <label>TOTAL: {{totalPrice}}</label>
+        <div class="row justify-content-center rounded total">
+            <label>TOTAL: {{totalPrice}}</label>
+        </div>
         <label style="width: 30px"></label>
     </div>
-    
+
+
 </div>

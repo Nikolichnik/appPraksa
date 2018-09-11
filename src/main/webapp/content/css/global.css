@@ -117,6 +117,21 @@ Custom alerts for notification
     background: rgba(12, 29, 32, 0.306);
 }
 
+.total {
+    height: 50px;
+    width: 150px;
+    background: rgba(59, 14, 14, 0.625);
+}
+
+.total label {
+    margin-top: 11px;
+}
+
+.total:hover {
+    background: rgba(83, 13, 13, 0.625);
+    box-shadow: 0px 0px 20px 10px rgba(112, 10, 10, 0.285);
+}
+
 .alert .popover pre {
     font-size: 10px;
 }
