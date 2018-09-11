@@ -28,12 +28,7 @@
                             This field is required.
                         </small>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="brezaApp.onlineOrder.totalPrice" for="field_totalPrice">Total Price</label>
-                    <input type="number" class="form-control" name="totalPrice" id="field_totalPrice"
-                        [(ngModel)]="onlineOrder.totalPrice" />
-                </div>
+                </div>                
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.onlineOrder.city" for="field_city">City</label>
                     <select class="form-control" id="field_city" name="city" [(ngModel)]="onlineOrder.city" required>
@@ -60,6 +55,11 @@
                         This field is required.
                     </small>
                 </div>
+            </div>
+            <!-- *ngIf="onlineOrder.id" -->
+            <div class="form-group">
+                <label class="form-control-label" jhiTranslate="brezaApp.onlineOrder.totalPrice" for="field_totalPrice">Total Price</label>
+                <input type="number" class="form-control" name="totalPrice" id="field_totalPrice" readonly [(ngModel)]="onlineOrder.totalPrice" />
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">

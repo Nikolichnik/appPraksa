@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy, Input, Output } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { IOnlineOrderItem } from 'app/shared/model/online-order-item.model';
+import { IOnlineOrderItem, OnlineOrderItem } from 'app/shared/model/online-order-item.model';
 import { Principal } from 'app/core';
 import { OnlineOrderItemService } from './online-order-item.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
-import { IOnlineOrder } from 'app/shared/model/online-order.model';
 import { Column } from 'ng2-smart-table/lib/data-set/column';
 
 @Component({
@@ -26,7 +25,10 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
 
     onlineOrderId: number;
 
-    @Output() totalPrice: number;
+    message = this.onlineOrderItems;
+    private onlineOrderItem = new OnlineOrderItem();
+
+    totalPrice = new Observable(observer => setInterval(() => observer.next(this.totalPrice), 100));
 
     settings = {
         actions: {
@@ -57,9 +59,6 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                 title: 'ID',
                 width: '70px'
             },
-            // onlineOrderId: {
-            //     title: 'Online order'
-            // },
             articleName: {
                 title: 'Article'
             },

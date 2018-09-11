@@ -110,7 +110,11 @@ Custom alerts for notification
 }
 
 .smart-table tbody tr:hover {
-    background: rgba(23, 57, 63, 0.394);
+    background: rgba(23, 57, 63, 0.462);
+}
+
+.smart-table tbody {
+    background: rgba(12, 29, 32, 0.306);
 }
 
 .alert .popover pre {

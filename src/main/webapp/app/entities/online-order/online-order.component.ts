@@ -1,3 +1,4 @@
+import { IOnlineOrderItem } from './../../shared/model/online-order-item.model';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
@@ -85,6 +86,7 @@ export class OnlineOrderComponent implements OnInit, OnDestroy {
                 for (const onlineOrder of res.body) {
                     if (onlineOrder.city) {
                         onlineOrder.cityName = onlineOrder.city.zipcode + ' ' + onlineOrder.city.name;
+                        onlineOrder.totalPrice = 3854302;
                     }
                     if (onlineOrder.client) {
                         onlineOrder.clientName = onlineOrder.client.name;
