@@ -57,7 +57,7 @@
                 </div>
             </div>
             <!-- *ngIf="onlineOrder.id" -->
-            <div class="form-group">
+            <div class="form-group" *ngIf="checkIfRouteContainsEdit()">
                 <label class="form-control-label" jhiTranslate="brezaApp.onlineOrder.totalPrice" for="field_totalPrice">Total Price</label>
                 <input type="number" class="form-control" name="totalPrice" id="field_totalPrice" readonly [(ngModel)]="onlineOrder.totalPrice" />
             </div>
@@ -98,7 +98,7 @@
     </table>
 </div> -->
 
-<jhi-online-order-item *ngIf="onlineOrder.id"></jhi-online-order-item>
+<jhi-online-order-item *ngIf="checkIfRouteContainsEdit()"></jhi-online-order-item>
 
 <!-- jhiTranslate="brezaApp.onlineOrderItem.itemPrice" -->
 <!-- (mouseover)="setFilter(onlineOrder.id)" -->

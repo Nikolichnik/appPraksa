@@ -1,7 +1,7 @@
 import { OnlineOrderItemService } from './../online-order-item/online-order-item.service';
 import { IOnlineOrderItem } from './../../shared/model/online-order-item.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JhiAlertService } from 'ng-jhipster';
@@ -36,7 +36,8 @@ export class OnlineOrderUpdateComponent implements OnInit {
         private cityService: CityService,
         private clientService: ClientService,
         private onlineOrderItemService: OnlineOrderItemService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private route: Router
     ) {}
 
     ngOnInit() {
@@ -73,6 +74,13 @@ export class OnlineOrderUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+    }
+
+    checkIfRouteContainsEdit() {
+        if (this.route.url.includes('new')) {
+            return false;
+        }
+        return true;
     }
 
     previousState() {
