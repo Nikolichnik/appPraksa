@@ -36,6 +36,11 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ onlineOrderItem }) => {
             this.onlineOrderItem = onlineOrderItem;
         });
+
+        this.activatedRoute.params.subscribe(param => {
+            this.onlineOrderItem.onlineOrderId = +param['onlineOrderId'];
+        });
+
         this.onlineOrderService.query().subscribe(
             (res: HttpResponse<IOnlineOrder[]>) => {
                 this.onlineorders = res.body;
@@ -98,6 +103,8 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
     onNgChange() {
         if (this._onlineOrderItem.article && this._onlineOrderItem.orderedAmount) {
             this._onlineOrderItem.itemPrice = this._onlineOrderItem.article.price * this._onlineOrderItem.orderedAmount;
+        } else {
+            this._onlineOrderItem.itemPrice = 0;
         }
     }
 }

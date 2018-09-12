@@ -56,10 +56,6 @@ export class OnlineOrderUpdateComponent implements OnInit, OnDestroy {
             this.onlineOrder.totalPrice = response.content;
         });
 
-        if (this.onlineOrder.totalPrice) {
-            console.log('TOTAL PRICE RECEIVED: ' + this.onlineOrder.totalPrice);
-        }
-
         this.cityService.query().subscribe(
             (res: HttpResponse<ICity[]>) => {
                 this.cities = res.body;

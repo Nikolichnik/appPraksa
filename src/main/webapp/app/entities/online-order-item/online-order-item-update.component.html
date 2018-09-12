@@ -35,7 +35,7 @@
                         <option [ngValue]="articleOption.id === onlineOrderItem.article?.id ? onlineOrderItem.article : articleOption" *ngFor="let articleOption of articles; trackBy: trackArticleById">{{articleOption.name}}</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.onlineOrderItem.onlineOrder" for="field_onlineOrder">Online
                         Order</label>
                     <select class="form-control" id="field_onlineOrder" name="onlineOrder" [(ngModel)]="onlineOrderItem.onlineOrder" required>
@@ -43,7 +43,7 @@
                         <option [ngValue]="onlineOrderOption.id === onlineOrderItem.onlineOrder?.id ? onlineOrderItem.onlineOrder : onlineOrderOption"
                             *ngFor="let onlineOrderOption of onlineorders; trackBy: trackOnlineOrderById">{{onlineOrderOption.id}}</option>
                     </select>
-                </div>
+                </div> -->
                 <div [hidden]="!(editForm.controls.onlineOrder?.dirty && editForm.controls.onlineOrder?.invalid)">
                     <small class="form-text text-danger" [hidden]="!editForm.controls.onlineOrder?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.

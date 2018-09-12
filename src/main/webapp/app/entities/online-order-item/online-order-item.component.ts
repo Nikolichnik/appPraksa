@@ -177,7 +177,7 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
             name: 'onlineOrderItemModification',
             content: 'Add an Item'
         });
-        setTimeout(this.router.navigateByUrl('/online-order-item/new'), 100);
+        setTimeout(this.router.navigateByUrl('online-order/' + this.onlineOrderId + '/online-order-item/new'), 100);
     }
 
     onCustom(event) {
@@ -189,9 +189,9 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
         });
 
         if (event.action === 'view') {
-            this.router.navigateByUrl('online-order-item/' + event.data.id + '/view');
+            this.router.navigateByUrl('online-order/' + this.onlineOrderId + '/online-order-item/' + event.data.id + '/view');
         } else if (event.action === 'edit') {
-            this.router.navigateByUrl('online-order-item/' + event.data.id + '/edit');
+            this.router.navigateByUrl('online-order/' + this.onlineOrderId + '/online-order-item/' + event.data.id + '/edit');
         } else if (event.action === 'delete') {
             this.router.navigate(['/', { outlets: { popup: 'online-order-item/' + event.data.id + '/delete' } }]);
         }
