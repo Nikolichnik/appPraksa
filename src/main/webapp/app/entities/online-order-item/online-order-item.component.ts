@@ -101,10 +101,16 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
                 for (const item of res.body) {
                     item.onlineOrder.totalPrice = 0;
                     item.itemPrice = item.orderedAmount * item.article.price;
-                    this.totalPrice += item.itemPrice;
-                    item.onlineOrder.totalPrice += item.itemPrice;
 
-                    this.onlineOrderService.update(item.onlineOrder);
+                    this.totalPrice += item.itemPrice;
+
+                    this.eventManager.broadcast({
+                        name: 'onlineOrderItemTotalPrice',
+                        content: this.totalPrice
+                    });
+
+                    // item.onlineOrder.totalPrice += item.itemPrice;
+                    // this.onlineOrderService.update(item.onlineOrder);
 
                     if (item.onlineOrder) {
                         item.onlineOrderId = item.onlineOrder.id;

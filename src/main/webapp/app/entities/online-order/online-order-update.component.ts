@@ -44,13 +44,22 @@ export class OnlineOrderUpdateComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
-        this.eventSubscriber = this.eventManager.subscribe('onlineOrderItemModification', response => this.save());
-        console.log('EventSubscriber INITIALISED! ' + this.eventSubscriber);
-
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ onlineOrder }) => {
             this.onlineOrder = onlineOrder;
         });
+
+        this.eventSubscriber = this.eventManager.subscribe('onlineOrderItemModification', response => this.save());
+        console.log('EventSubscriber INITIALISED! ' + this.eventSubscriber);
+
+        this.eventSubscriber = this.eventManager.subscribe('onlineOrderItemTotalPrice', response => {
+            this.onlineOrder.totalPrice = response.content;
+        });
+
+        if (this.onlineOrder.totalPrice) {
+            console.log('TOTAL PRICE RECEIVED: ' + this.onlineOrder.totalPrice);
+        }
+
         this.cityService.query().subscribe(
             (res: HttpResponse<ICity[]>) => {
                 this.cities = res.body;
