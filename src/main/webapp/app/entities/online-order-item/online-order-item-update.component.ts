@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JhiAlertService } from 'ng-jhipster';
@@ -23,16 +23,20 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
 
     articles: IArticle[];
 
+    isNext: boolean;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private onlineOrderItemService: OnlineOrderItemService,
         private onlineOrderService: OnlineOrderService,
         private articleService: ArticleService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private router: Router
     ) {}
 
     ngOnInit() {
-        this.isSaving = false;
+        this.isNext = false;
+
         this.activatedRoute.data.subscribe(({ onlineOrderItem }) => {
             this.onlineOrderItem = onlineOrderItem;
         });
@@ -65,7 +69,8 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
     }
 
     previousState() {
-        window.history.back();
+        // window.history.back();
+        this.router.navigateByUrl('online-order/' + this.onlineOrderItem.onlineOrderId + '/edit');
     }
 
     save() {
@@ -83,7 +88,14 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
 
     private onSaveSuccess() {
         this.isSaving = false;
-        this.previousState();
+        if (this.isNext) {
+            this.isNext = false;
+            this.router
+                .navigateByUrl('online-order/' + this.onlineOrderItem.onlineOrderId + '/edit', { skipLocationChange: true })
+                .then(() => this.router.navigate(['/online-order/' + this.onlineOrderItem.onlineOrderId + '/online-order-item/new']));
+        } else {
+            this.previousState();
+        }
     }
 
     private onSaveError() {
@@ -115,5 +127,10 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
         } else {
             this._onlineOrderItem.itemPrice = 0;
         }
+    }
+
+    next() {
+        this.isNext = true;
+        this.save();
     }
 }

@@ -105,7 +105,9 @@
             "edit": "Izmeni",
             "open": "Otvori",
             "save": "Sačuvaj",
-            "view": "Pregled"
+            "view": "Pregled",
+            "next": "Sledeće",
+            "finish": "Kraj"
         },
         "detail": {
             "field": "Polje",
