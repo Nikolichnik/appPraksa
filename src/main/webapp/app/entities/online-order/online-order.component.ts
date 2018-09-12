@@ -23,6 +23,8 @@ export class OnlineOrderComponent implements OnInit, OnDestroy {
 
     @Input() totalPrice: number;
 
+    eventSubscriberTotal: Subscription;
+
     settings = {
         actions: {
             edit: false,
@@ -86,7 +88,9 @@ export class OnlineOrderComponent implements OnInit, OnDestroy {
                 for (const onlineOrder of res.body) {
                     if (onlineOrder.city) {
                         onlineOrder.cityName = onlineOrder.city.zipcode + ' ' + onlineOrder.city.name;
-                        onlineOrder.totalPrice = 3854302;
+                        this.eventSubscriberTotal = this.eventManager.subscribe('onlineOrderItemTotalPrice', response => {
+                            onlineOrder.totalPrice = response.content;
+                        });
                     }
                     if (onlineOrder.client) {
                         onlineOrder.clientName = onlineOrder.client.name;
@@ -108,6 +112,7 @@ export class OnlineOrderComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
+        this.eventManager.destroy(this.eventSubscriberTotal);
     }
 
     trackId(index: number, item: IOnlineOrder) {
