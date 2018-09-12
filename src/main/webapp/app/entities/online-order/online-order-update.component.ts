@@ -1,6 +1,6 @@
 import { OnlineOrderItemService } from './../online-order-item/online-order-item.service';
 import { IOnlineOrderItem } from './../../shared/model/online-order-item.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
@@ -18,7 +18,7 @@ import { LocalDataSource } from 'ng2-smart-table';
     selector: 'jhi-online-order-update',
     templateUrl: './online-order-update.component.html'
 })
-export class OnlineOrderUpdateComponent implements OnInit {
+export class OnlineOrderUpdateComponent implements OnInit, OnDestroy {
     private _onlineOrder: IOnlineOrder;
     isSaving: boolean;
 
@@ -45,6 +45,7 @@ export class OnlineOrderUpdateComponent implements OnInit {
 
     ngOnInit() {
         this.eventSubscriber = this.eventManager.subscribe('onlineOrderItemModification', response => this.save());
+        console.log('EventSubscriber INITIALISED! ' + this.eventSubscriber);
 
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ onlineOrder }) => {
@@ -100,6 +101,11 @@ export class OnlineOrderUpdateComponent implements OnInit {
 
     previousState() {
         window.history.back();
+    }
+
+    ngOnDestroy() {
+        this.eventManager.destroy(this.eventSubscriber);
+        console.log('EventSubscriber DESTROYED! ' + this.eventSubscriber);
     }
 
     save() {
