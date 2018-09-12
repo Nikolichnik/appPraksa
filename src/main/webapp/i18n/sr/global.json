@@ -1,21 +1,21 @@
 {
     "global": {
-        "title": "Breza",
+        "title": "transOrbital",
         "browsehappy": "Koristite <strong>zastareli</strong> pretraživač. Molimo vas <a href=\"http://browsehappy.com/?locale=en\">nadogradite pretraživač</a> kako biste poboljšali Vaše iskustvo.",
         "menu": {
             "home": "Početna stranica",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entiteti",
-                "article": "Article",
-                "city": "City",
-                "client": "Client",
+                "article": "Artikal",
+                "city": "Grad",
+                "client": "Klijent",
                 "position": "Position",
-                "employee": "Employee",
-                "type": "Type",
-                "vehicle": "Vehicle",
-                "onlineOrder": "Online Order",
-                "onlineOrderItem": "Online Order Item",
+                "employee": "Zaposleni",
+                "type": "Tip",
+                "vehicle": "Vozilo",
+                "onlineOrder": "Porudžbina",
+                "onlineOrderItem": "Artikal",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -118,7 +118,7 @@
             "required": "Polje je obavezno.",
             "minlength": "Polje mora biti veće od {{ min }} karaktera.",
             "maxlength": "Polje ne može biti duže od {{ max }} karaktera.",
-            "min": "Polje mora biti veče od {{ min }}.",
+            "min": "Polje mora biti veće od {{ min }}.",
             "max": "Polje ne sme biti veće od {{ max }}.",
             "minbytes": "Polje mora biti veće od {{ min }} bajtova.",
             "maxbytes": "Polje ne može biti veće od {{ max }} bajtova.",

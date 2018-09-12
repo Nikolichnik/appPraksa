@@ -3,23 +3,23 @@
     "brezaApp": {
         "onlineOrderItem" : {
             "home": {
-                "title": "Online Order Items",
-                "createLabel": "Kreiraj novi Online Order Item",
-                "createOrEditLabel": "Kreirajte ili izmenite Online Order Item"
+                "title": "Artikli",
+                "createLabel": "Kreiraj novi artikal",
+                "createOrEditLabel": "Kreirajte ili izmenite artikal"
             },
-            "created": "Kreiran je novi Online Order Item pod nazivom {{ param }}",
-            "updated": "Online Order Item pod nazivom {{ param }} je ažuriran",
-            "deleted": "Online Order Item pod nazivom {{ param }} je obrisan",
+            "created": "Kreiran je novi artikal pod nazivom {{ param }}",
+            "updated": "Artikal pod nazivom {{ param }} je ažuriran",
+            "deleted": "Artikal pod nazivom {{ param }} je obrisan",
             "delete": {
-                "question": "Da li ste sigurni da želite da obrišete Online Order Item pod nazivom {{ id }}?"
+                "question": "Da li ste sigurni da želite da obrišete artikal {{ id }}?"
             },
             "detail": {
-                "title": "Online Order Item"
+                "title": "Artikal"
             },
-            "orderedAmount": "Ordered Amount",
-            "itemPrice": "Item Price",
-            "onlineOrder": "Online Order",
-            "article": "Article"
+            "orderedAmount": "Naručena količina",
+            "itemPrice": "Cena artikla",
+            "onlineOrder": "Online porudžbina",
+            "article": "Stavka"
         }
     }
 }

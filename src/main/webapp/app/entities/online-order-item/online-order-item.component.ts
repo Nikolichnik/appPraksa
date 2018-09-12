@@ -32,8 +32,6 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
 
     @Output() childSubmit = new EventEmitter<any>();
 
-    // totalPrice = new Observable(observer => setInterval(() => observer.next(this.totalPrice), 100));
-
     settings = {
         actions: {
             edit: false,
@@ -56,7 +54,7 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
         mode: 'external',
         add: {
             // create: true,
-            addButtonContent: 'Create new Online Order Item'
+            addButtonContent: 'Create new Article'
         },
         columns: {
             id: {
