@@ -42,7 +42,8 @@ export class OnlineOrderComponent implements OnInit, OnDestroy {
                     name: 'delete',
                     title: 'Delete'
                 }
-            ]
+            ],
+            columnTitle: ''
         },
         mode: 'external',
         add: {
