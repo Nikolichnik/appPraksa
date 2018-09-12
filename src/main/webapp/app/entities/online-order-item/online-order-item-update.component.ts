@@ -41,6 +41,15 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
             this.onlineOrderItem.onlineOrderId = +param['onlineOrderId'];
         });
 
+        console.log('this.onlineOrderItem.onlineOrderId: ' + this.onlineOrderItem.onlineOrderId);
+
+        this.onlineOrderService.find(this.onlineOrderItem.onlineOrderId).subscribe(
+            (res: HttpResponse<IOnlineOrder>) => {
+                this.onlineOrderItem.onlineOrder = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+
         this.onlineOrderService.query().subscribe(
             (res: HttpResponse<IOnlineOrder[]>) => {
                 this.onlineorders = res.body;
