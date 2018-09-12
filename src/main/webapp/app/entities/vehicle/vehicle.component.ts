@@ -168,6 +168,10 @@ export class VehicleComponent implements OnInit, OnDestroy {
         } else {
             this.subscribeToSaveResponse(this.vehicleService.create(this.vehicle));
         }
+        this.eventManager.broadcast({
+            name: 'vehicleListModification',
+            content: 'Added a vehicle'
+        });
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<IVehicle>>) {
