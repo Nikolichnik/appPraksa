@@ -31,6 +31,7 @@ export class OnlineOrderUpdateComponent implements OnInit, OnDestroy {
     data;
 
     eventSubscriber: Subscription;
+    eventSubscriberTotal: Subscription;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -50,9 +51,8 @@ export class OnlineOrderUpdateComponent implements OnInit, OnDestroy {
         });
 
         this.eventSubscriber = this.eventManager.subscribe('onlineOrderItemModification', response => this.save());
-        console.log('EventSubscriber INITIALISED! ' + this.eventSubscriber);
 
-        this.eventSubscriber = this.eventManager.subscribe('onlineOrderItemTotalPrice', response => {
+        this.eventSubscriberTotal = this.eventManager.subscribe('onlineOrderItemTotalPrice', response => {
             this.onlineOrder.totalPrice = response.content;
         });
 
@@ -114,7 +114,7 @@ export class OnlineOrderUpdateComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
-        console.log('EventSubscriber DESTROYED! ' + this.eventSubscriber);
+        this.eventManager.destroy(this.eventSubscriberTotal);
     }
 
     save() {
