@@ -48,21 +48,21 @@
                     <label class="form-control-label" jhiTranslate="brezaApp.deliveryOrder.vehicle" for="field_vehicle">Vehicle</label>
                     <select class="form-control" id="field_vehicle" name="vehicle" [(ngModel)]="deliveryOrder.vehicle" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="vehicleOption.id === deliveryOrder.vehicle?.id ? deliveryOrder.vehicle : vehicleOption" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.id}}</option>
+                        <option [ngValue]="vehicleOption.id === deliveryOrder.vehicle?.id ? deliveryOrder.vehicle : vehicleOption" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.model}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.deliveryOrder.warehouseClerk" for="field_warehouseClerk">Warehouse Clerk</label>
                     <select class="form-control" id="field_warehouseClerk" name="warehouseClerk" [(ngModel)]="deliveryOrder.warehouseClerk" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="employeeOption.id === deliveryOrder.warehouseClerk?.id ? deliveryOrder.warehouseClerk : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.fullName}}</option>
+                        <option [ngValue]="employeeOption.id === deliveryOrder.warehouseClerk?.id ? deliveryOrder.warehouseClerk : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.lastName}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.deliveryOrder.driver" for="field_driver">Driver</label>
                     <select class="form-control" id="field_driver" name="driver" [(ngModel)]="deliveryOrder.driver" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="employeeOption.id === deliveryOrder.driver?.id ? deliveryOrder.driver : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.fullName}}</option>
+                        <option [ngValue]="employeeOption.id === deliveryOrder.driver?.id ? deliveryOrder.driver : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.lastName}}</option>
                     </select>
                 </div>
             </div>

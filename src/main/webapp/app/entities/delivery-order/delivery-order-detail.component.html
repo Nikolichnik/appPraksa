@@ -22,19 +22,19 @@
                 <dt><span jhiTranslate="brezaApp.deliveryOrder.vehicle">Vehicle</span></dt>
                 <dd>
                     <div *ngIf="deliveryOrder.vehicle">
-                        <a [routerLink]="['/vehicle', deliveryOrder.vehicle?.id, 'view']">{{deliveryOrder.vehicle?.id}}</a>
+                        <a [routerLink]="['/vehicle', deliveryOrder.vehicle?.id, 'view']">{{deliveryOrder.vehicle?.model}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="brezaApp.deliveryOrder.warehouseClerk">Warehouse Clerk</span></dt>
                 <dd>
                     <div *ngIf="deliveryOrder.warehouseClerk">
-                        <a [routerLink]="['/employee', deliveryOrder.warehouseClerk?.id, 'view']">{{deliveryOrder.warehouseClerk?.fullName}}</a>
+                        <a [routerLink]="['/employee', deliveryOrder.warehouseClerk?.id, 'view']">{{deliveryOrder.warehouseClerk?.lastName}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="brezaApp.deliveryOrder.driver">Driver</span></dt>
                 <dd>
                     <div *ngIf="deliveryOrder.driver">
-                        <a [routerLink]="['/employee', deliveryOrder.driver?.id, 'view']">{{deliveryOrder.driver?.fullName}}</a>
+                        <a [routerLink]="['/employee', deliveryOrder.driver?.id, 'view']">{{deliveryOrder.driver?.lastName}}</a>
                     </div>
                 </dd>
             </dl>

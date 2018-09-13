@@ -19,8 +19,8 @@
             <th><span jhiTranslate="brezaApp.deliveryOrder.status">Status</span></th>
             <th><span jhiTranslate="brezaApp.deliveryOrder.onlineOrder">Online Order</span></th>
             <th><span jhiTranslate="brezaApp.deliveryOrder.vehicle">Vehicle</span></th>
-            <th><span jhiTranslate="brezaApp.deliveryOrder.driver">Driver</span></th>
             <th><span jhiTranslate="brezaApp.deliveryOrder.warehouseClerk">Warehouse Clerk</span></th>
+            <th><span jhiTranslate="brezaApp.deliveryOrder.driver">Driver</span></th>
             <th></th>
             </tr>
             </thead>
@@ -36,19 +36,19 @@
                 </td>
                 <td>
                     <div *ngIf="deliveryOrder.vehicle">
-                        <a [routerLink]="['../vehicle', deliveryOrder.vehicle?.id, 'view' ]" >{{deliveryOrder.vehicle?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="deliveryOrder.driver">
-                        <a [routerLink]="['../employee', deliveryOrder.driver?.id, 'view' ]" >{{deliveryOrder.driver?.id}}</a>
+                        <a [routerLink]="['../vehicle', deliveryOrder.vehicle?.id, 'view' ]" >{{deliveryOrder.vehicle?.model}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="deliveryOrder.warehouseClerk">
-                        <a [routerLink]="['../employee', deliveryOrder.warehouseClerk?.id, 'view' ]" >{{deliveryOrder.warehouseClerk?.id}}</a>
+                        <a [routerLink]="['../employee', deliveryOrder.warehouseClerk?.id, 'view' ]" >{{deliveryOrder.warehouseClerk?.lastName}}</a>
                     </div>
-                </td>                
+                </td>
+                <td>
+                    <div *ngIf="deliveryOrder.driver">
+                        <a [routerLink]="['../employee', deliveryOrder.driver?.id, 'view' ]" >{{deliveryOrder.driver?.lastName}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
