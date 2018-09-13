@@ -132,10 +132,10 @@ public class OnlineOrderItemResource {
      * @return the ResponseEntity with status 200 (OK) and with body the
      *         onlineOrderItem, or with status 404 (Not Found)
      */
-    @GetMapping("/online-order-items/online-orders/{OnlineOrderItemId}")
+    @GetMapping("/online-order-items/online-orders/{OnlineOrderId}")
     @Timed
-    public List<OnlineOrderItem> findByOnlineOrderId(@PathVariable Long OnlineOrderItemId) {
-        List<OnlineOrderItem> onlineOrderItems = onlineOrderItemRepository.findByOnlineOrderId(OnlineOrderItemId);
+    public List<OnlineOrderItem> findByOnlineOrderId(@PathVariable Long OnlineOrderId) {
+        List<OnlineOrderItem> onlineOrderItems = onlineOrderItemRepository.findByOnlineOrderId(OnlineOrderId);
         return onlineOrderItems;
     }
 }

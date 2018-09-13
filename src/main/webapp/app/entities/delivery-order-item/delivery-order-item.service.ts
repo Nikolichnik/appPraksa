@@ -35,4 +35,8 @@ export class DeliveryOrderItemService {
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
+
+    getByDeliveryId(DeliveryOrderId: number): Observable<EntityArrayResponseType> {
+        return this.http.get<IDeliveryOrderItem[]>(`${this.resourceUrl}/delivery-orders/${DeliveryOrderId}`, { observe: 'response' });
+    }
 }

@@ -117,4 +117,18 @@ public class DeliveryOrderItemResource {
         deliveryOrderItemRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    /**
+     * GETBYORDERID /online-order-items/:id : get the "id" onlineOrderItem for
+     * certain DeliveryOrderItemId.
+     *
+     * @return the ResponseEntity with status 200 (OK) and with body the
+     *         onlineOrderItem, or with status 404 (Not Found)
+     */
+    @GetMapping("/delivery-order-items/delivery-orders/{deliveryOrderId}")
+    @Timed
+    public List<DeliveryOrderItem> findByDeliveryOrderId(@PathVariable Long deliveryOrderId) {
+        List<DeliveryOrderItem> deliveryOrderItems = deliveryOrderItemRepository.findByDeliveryOrderId(deliveryOrderId);
+        return deliveryOrderItems;
+    }
 }

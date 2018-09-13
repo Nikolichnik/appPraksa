@@ -83,8 +83,7 @@ export class OnlineOrderItemComponent implements OnInit, OnDestroy {
         private eventManager: JhiEventManager,
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
-        private router: Router,
-        private onlineOrderService: OnlineOrderService
+        private router: Router
     ) {}
 
     loadAll() {

@@ -13,5 +13,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface OnlineOrderItemRepository extends JpaRepository<OnlineOrderItem, Long> {
-    public List<OnlineOrderItem> findByOnlineOrderId(Long OnlineOrderItemId);
+    public List<OnlineOrderItem> findByOnlineOrderId(Long OnlineOrderId);
 }
