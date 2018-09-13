@@ -1,0 +1,59 @@
+{
+    "name": "DeliveryOrder",
+    "fields": [
+        {
+            "fieldName": "deliveryDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "onlineOrder",
+            "otherEntityName": "onlineOrder",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityRelationshipName": "DeliveryOrder"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "vehicle",
+            "otherEntityName": "vehicle",
+            "otherEntityField": "id",            
+            "otherEntityRelationshipName": "DeliveryOrder"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "warehouseClerk",
+            "otherEntityName": "employee",
+            "otherEntityField": "id",            
+            "otherEntityRelationshipName": "DeliveryOrder"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "driver",
+            "otherEntityName": "employee",
+            "otherEntityField": "id",            
+            "otherEntityRelationshipName": "DeliveryOrder"
+        }
+    ],
+    "changelogDate": "20180905092929",
+    "entityTableName": "delivery_order",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -16,6 +16,7 @@
                 "vehicle": "Vozilo",
                 "onlineOrder": "Porudžbina",
                 "onlineOrderItem": "Artikal",
+                "deliveryOrder": "Delivery Order",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
