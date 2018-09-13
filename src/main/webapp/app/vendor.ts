@@ -44,7 +44,9 @@ import {
     faUserTie,
     faAdjust,
     faSpaceShuttle,
-    faCartArrowDown
+    faCartArrowDown,
+    faTruckLoading,
+    faTruckMoving
 } from '@fortawesome/free-solid-svg-icons';
 
 // Adds the SVG icon to the library so you can use it in your page
@@ -87,5 +89,7 @@ library.add(faUserTie);
 library.add(faAdjust);
 library.add(faSpaceShuttle);
 library.add(faCartArrowDown);
+library.add(faTruckLoading);
+library.add(faTruckMoving);
 
 // jhipster-needle-add-element-to-vendor - JHipster will add new menu items here
