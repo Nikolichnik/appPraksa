@@ -109,10 +109,8 @@ export class OnlineOrderUpdateComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if (this.eventSubscriber && this.eventSubscriberTotal) {
-            this.eventManager.destroy(this.eventSubscriber);
-            this.eventManager.destroy(this.eventSubscriberTotal);
-        }
+        this.eventManager.destroy(this.eventSubscriber);
+        this.eventManager.destroy(this.eventSubscriberTotal);
     }
 
     save() {

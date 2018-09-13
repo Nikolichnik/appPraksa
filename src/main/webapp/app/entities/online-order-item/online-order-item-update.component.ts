@@ -91,7 +91,7 @@ export class OnlineOrderItemUpdateComponent implements OnInit {
         if (this.isNext) {
             this.isNext = false;
             this.router
-                .navigateByUrl('online-order/' + this.onlineOrderItem.onlineOrderId + '/edit', { skipLocationChange: true })
+                .navigateByUrl('', { skipLocationChange: true })
                 .then(() => this.router.navigate(['/online-order/' + this.onlineOrderItem.onlineOrderId + '/online-order-item/new']));
         } else {
             this.previousState();
