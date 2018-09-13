@@ -36,14 +36,14 @@
             "relationshipType": "many-to-one",
             "relationshipName": "warehouseClerk",
             "otherEntityName": "employee",
-            "otherEntityField": "id",            
+            "otherEntityField": "fullName",            
             "otherEntityRelationshipName": "DeliveryOrder"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "driver",
             "otherEntityName": "employee",
-            "otherEntityField": "id",            
+            "otherEntityField": "fullName",            
             "otherEntityRelationshipName": "DeliveryOrder"
         }
     ],
