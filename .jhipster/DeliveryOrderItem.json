@@ -1,54 +1,45 @@
 {
-    "name": "DeliveryOrder",
+    "name": "DeliveryOrderItem",
     "fields": [
         {
-            "fieldName": "deliveryDate",
-            "fieldType": "LocalDate"
+            "fieldName": "preparedAmount",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 1
         },
         {
-            "fieldName": "status",
-            "fieldType": "String",
+            "fieldName": "deliveredAmount",
+            "fieldType": "Long",
             "fieldValidateRules": [
-                "required"
-            ]
+                "min"
+            ],
+            "fieldValidateRulesMin": 1
         }
     ],
     "relationships": [
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "onlineOrder",
-            "otherEntityName": "onlineOrder",
+            "relationshipName": "onlineOrderItem",
+            "otherEntityName": "onlineOrderItem",
             "otherEntityField": "id",
             "ownerSide": true,
             "relationshipValidateRules": [
                 "required"
             ],
-            "otherEntityRelationshipName": "DeliveryOrder"
+            "otherEntityRelationshipName": "DeliveryOrderItem"
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "vehicle",
-            "otherEntityName": "vehicle",
+            "relationshipName": "deliveryOrder",
+            "otherEntityName": "deliveryOrder",
             "otherEntityField": "id",            
-            "otherEntityRelationshipName": "DeliveryOrder"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "warehouseClerk",
-            "otherEntityName": "employee",
-            "otherEntityField": "id",            
-            "otherEntityRelationshipName": "DeliveryOrder"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "driver",
-            "otherEntityName": "employee",
-            "otherEntityField": "id",            
-            "otherEntityRelationshipName": "DeliveryOrder"
+            "otherEntityRelationshipName": "DeliveryOrderItem"
         }
     ],
     "changelogDate": "20180905092929",
-    "entityTableName": "delivery_order",
+    "entityTableName": "delivery_order_item",
     "dto": "no",
     "pagination": "no",
     "service": "no",

@@ -17,6 +17,7 @@
                 "onlineOrder": "Porudžbina",
                 "onlineOrderItem": "Artikal",
                 "deliveryOrder": "Delivery Order",
+                "deliveryOrderItem": "Delivery Order Item",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
