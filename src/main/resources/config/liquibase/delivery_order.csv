@@ -1,5 +1,5 @@
 id;delivery_date;status;online_order_id;vehicle_id;warehouse_clerk_id;driver_id
 1;null;NEW;1;null;null;null
-2;null;NEW;2;null;null;null
+2;2018-09-03;NEW;2;2;3;1
 3;null;NEW;3;null;null;null
-4;null;NEW;4;null;null;null
+4;2018-05-05;NEW;4;1;2;3
