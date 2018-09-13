@@ -105,7 +105,7 @@ export class OnlineOrderUpdateComponent implements OnInit, OnDestroy {
     }
 
     previousState() {
-        window.history.back();
+        this.route.navigateByUrl('/online-order');
     }
 
     ngOnDestroy() {
