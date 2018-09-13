@@ -11,6 +11,7 @@ import { DeliveryOrderDetailComponent } from './delivery-order-detail.component'
 import { DeliveryOrderUpdateComponent } from './delivery-order-update.component';
 import { DeliveryOrderDeletePopupComponent } from './delivery-order-delete-dialog.component';
 import { IDeliveryOrder } from 'app/shared/model/delivery-order.model';
+import { DeliveryOrderItemComponent } from 'app/entities/delivery-order-item';
 
 @Injectable({ providedIn: 'root' })
 export class DeliveryOrderResolve implements Resolve<IDeliveryOrder> {
@@ -45,7 +46,19 @@ export const deliveryOrderRoute: Routes = [
             authorities: ['ROLE_USER'],
             pageTitle: 'brezaApp.deliveryOrder.home.title'
         },
-        canActivate: [UserRouteAccessService]
+        canActivate: [UserRouteAccessService],
+        children: [
+            {
+                path: '',
+                component: DeliveryOrderItemComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'brezaApp.deliveryOrderItem.home.title'
+                },
+                canActivate: [UserRouteAccessService],
+                outlet: 'delivery-order-item'
+            }
+        ]
     },
     {
         path: 'delivery-order/new',
