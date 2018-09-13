@@ -37,7 +37,14 @@ import {
     faTrashAlt,
     faAsterisk,
     faTasks,
-    faHome
+    faHome,
+    faShoppingBag,
+    faBuilding,
+    faBriefcase,
+    faUserTie,
+    faAdjust,
+    faSpaceShuttle,
+    faCartArrowDown
 } from '@fortawesome/free-solid-svg-icons';
 
 // Adds the SVG icon to the library so you can use it in your page
@@ -73,5 +80,12 @@ library.add(faCalendarAlt);
 library.add(faSearch);
 library.add(faTrashAlt);
 library.add(faAsterisk);
+library.add(faShoppingBag);
+library.add(faBuilding);
+library.add(faBriefcase);
+library.add(faUserTie);
+library.add(faAdjust);
+library.add(faSpaceShuttle);
+library.add(faCartArrowDown);
 
 // jhipster-needle-add-element-to-vendor - JHipster will add new menu items here
