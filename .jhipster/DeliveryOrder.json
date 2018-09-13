@@ -29,21 +29,21 @@
             "relationshipType": "many-to-one",
             "relationshipName": "vehicle",
             "otherEntityName": "vehicle",
-            "otherEntityField": "id",            
+            "otherEntityField": "model",            
             "otherEntityRelationshipName": "DeliveryOrder"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "warehouseClerk",
             "otherEntityName": "employee",
-            "otherEntityField": "fullName",            
+            "otherEntityField": "lastName",            
             "otherEntityRelationshipName": "DeliveryOrder"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "driver",
             "otherEntityName": "employee",
-            "otherEntityField": "fullName",            
+            "otherEntityField": "lastName",            
             "otherEntityRelationshipName": "DeliveryOrder"
         }
     ],
