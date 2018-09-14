@@ -62,13 +62,6 @@ ng2-smart-table {
     border: none;
 }
 
-.dropdown-item:focus,
-.dropdown-item.active,
-.dropdown-item.active:focus,
-.dropdown-item.active:hover {
-    background-color: rgb(78, 78, 78);
-}
-
 /* a {
     color: rgb(195, 186, 255) !important;
     font-weight: bold;

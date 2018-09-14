@@ -53,6 +53,22 @@ Generic styles
     color: rgb(221, 221, 221);
 }
 
+.dropdown-item:hover,
+.dropdown-item.active,
+.dropdown-item.active:focus,
+.dropdown-item.active:hover {
+    background-color: rgb(70, 70, 70) !important;
+    color: white !important;
+}
+
+.table-responsive table tbody tr:hover {
+    background: rgba(23, 57, 63, 0.462);
+}
+
+.table-responsive table tbody {
+    background: rgba(12, 29, 32, 0.306);
+}
+
 .error {
     color: white;
     background-color: red;
