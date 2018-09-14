@@ -39,27 +39,26 @@
                         </small>
                     </div>
                 </div>
-
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.deliveryOrderItem.onlineOrderItem" for="field_onlineOrderItem">Online Order Item</label>
                     <select class="form-control" id="field_onlineOrderItem" name="onlineOrderItem" [(ngModel)]="deliveryOrderItem.onlineOrderItem" required>
                         <option *ngIf="!editForm.value.onlineOrderItem" [ngValue]="null" selected></option>
                         <option [ngValue]="onlineOrderItemOption.id === deliveryOrderItem.onlineOrderItem?.id ? deliveryOrderItem.onlineOrderItem : onlineOrderItemOption" *ngFor="let onlineOrderItemOption of onlineorderitems; trackBy: trackOnlineOrderItemById">{{onlineOrderItemOption.id}}</option>
                     </select>
-                </div>
+                </div> -->
                 <div [hidden]="!(editForm.controls.onlineOrderItem?.dirty && editForm.controls.onlineOrderItem?.invalid)">
                     <small class="form-text text-danger"
                         [hidden]="!editForm.controls.onlineOrderItem?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="brezaApp.deliveryOrderItem.deliveryOrder" for="field_deliveryOrder">Delivery Order</label>
                     <select class="form-control" id="field_deliveryOrder" name="deliveryOrder" [(ngModel)]="deliveryOrderItem.deliveryOrder" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="deliveryOrderOption.id === deliveryOrderItem.deliveryOrder?.id ? deliveryOrderItem.deliveryOrder : deliveryOrderOption" *ngFor="let deliveryOrderOption of deliveryorders; trackBy: trackDeliveryOrderById">{{deliveryOrderOption.id}}</option>
                     </select>
-                </div>
+                </div> -->
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

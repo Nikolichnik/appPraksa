@@ -82,7 +82,19 @@ export const deliveryOrderRoute: Routes = [
             authorities: ['ROLE_USER'],
             pageTitle: 'brezaApp.deliveryOrder.home.title'
         },
-        canActivate: [UserRouteAccessService]
+        canActivate: [UserRouteAccessService],
+        children: [
+            {
+                path: '',
+                component: DeliveryOrderItemComponent,
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'brezaApp.deliveryOrderItem.home.title'
+                },
+                canActivate: [UserRouteAccessService],
+                outlet: 'delivery-order-item'
+            }
+        ]
     }
 ];
 
